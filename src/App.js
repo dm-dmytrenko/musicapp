@@ -8,6 +8,7 @@ import Selector from './pages/Selector/Selector.jsx';
 import Preview from './pages/Preview/Preview.jsx';
 import Download from './pages/Download/Download.jsx';
 import AboutUs from './pages/AboutUs/AboutUs.jsx';
+import './App.css';
 
 const App = () => {
   return (
@@ -22,7 +23,16 @@ const App = () => {
         
         <StatusBar />
 
-        <Box sx={{ flexGrow: 1, position: 'relative' }}>
+        <Box sx={{ 
+          flexGrow: 1,         
+          height: 0,       
+          width: '100%',
+          position: 'relative',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          overflow: 'hidden'
+        }}>
           <Routes>
             <Route path="/about" element={<AboutUs />} />
             <Route path="/upload" element={<UploadTrack />} />
