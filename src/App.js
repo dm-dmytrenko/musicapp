@@ -28,7 +28,7 @@ const App = () => {
           height: 0,       
           width: '100%',
           position: 'relative',
-          display: 'flex',
+          display: 'flex',  
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden'

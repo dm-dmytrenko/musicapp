@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 
 const UploadTrack = () => {
   const [isDraggingFile, setIsDraggingFile] = useState(false);
   const navigate = useNavigate();
+  const fileInputRef = useRef(null);
 
   const handleDragOver = (e) => {
     e.preventDefault();
@@ -15,12 +16,31 @@ const UploadTrack = () => {
     setIsDraggingFile(false);
   };
 
+  const processFile = (file) => {
+    if (file) {
+      console.log("Audio file received:", file.name);
+    }
+  };
+
   const handleDrop = (e) => {
     e.preventDefault();
     setIsDraggingFile(false);
     const files = e.dataTransfer.files;
     if (files.length > 0) {
-      console.log("Audio file received:", files[0].name);
+      processFile(files[0]);
+    }
+  };
+
+  const handleContainerClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
+  const handleFileChange = (e) => {
+    const files = e.target.files;
+    if (files.length > 0) {
+      processFile(files[0]);
     }
   };
 
@@ -37,6 +57,14 @@ const UploadTrack = () => {
       overflow: 'hidden',
       fontFamily: "'Inter', sans-serif"
     }}>
+
+      <input 
+        type="file"
+        ref={fileInputRef}
+        onChange={handleFileChange}
+        accept="audio/*"
+        style={{ display: 'none' }} 
+      />
 
       <Box sx={{
         width: '100%',
@@ -66,8 +94,9 @@ const UploadTrack = () => {
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
+          onClick={handleContainerClick}
           sx={{
-            width: '100%',
+            width: '90%',
             height: '45vh',
             minHeight: '300px',
             background: isDraggingFile ? 'rgba(255, 255, 255, 0.65)' : 'rgba(255, 255, 255, 0.4)',
@@ -79,8 +108,10 @@ const UploadTrack = () => {
             backdropFilter: 'blur(30px)',
             WebkitBackdropFilter: 'blur(30px)',
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
+            gap: '8px',
             cursor: 'pointer',
             transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
             boxSizing: 'border-box',
@@ -100,12 +131,21 @@ const UploadTrack = () => {
           }}>
             Drag & drop
           </Box>
+          <Box sx={{
+            fontSize: '1.2vw',
+            minFontSize: '12px',
+            fontWeight: 500,
+            color: 'rgba(0, 68, 204, 0.6)',
+            userSelect: 'none'
+          }}>
+            or click to browse local files
+          </Box>
         </Box>
 
         <Box 
           onClick={() => navigate('/selector')} 
           sx={{
-            width: '100%',
+            width: '50%',
             background: 'linear-gradient(to bottom, #7cd8ff 0%, #0077ff 50%, #0055dd 51%, #0088ff 100%)',
             border: '1px solid #0044cc',
             borderRadius: '20px',
@@ -131,7 +171,7 @@ const UploadTrack = () => {
           }}
         >
           <Box sx={{ position: 'absolute', top: 0, left: 0, right: 0, height: '50%', background: 'linear-gradient(to bottom, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 100%)' }} />
-          I don't have track yet
+          Next
         </Box>
 
       </Box>
