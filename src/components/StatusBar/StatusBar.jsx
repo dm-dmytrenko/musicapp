@@ -11,7 +11,6 @@ const StatusBar = () => {
     { label: 'ABOUT US', path: '/about' },
     { label: 'UPLOAD TRACK', path: '/upload' },
     { label: 'CHOOSE OPTIONS', path: '/selector' },
-    { label: 'PREVIEW', path: '/preview' },
     { label: 'DOWNLOAD', path: '/download' }
   ];
 

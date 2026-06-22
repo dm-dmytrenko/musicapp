@@ -5,7 +5,6 @@ import { Box } from '@mui/system';
 import StatusBar from './components/StatusBar/StatusBar.jsx';
 import UploadTrack from './pages/UploadTrack/UploadTrack.jsx';
 import Selector from './pages/Selector/Selector.jsx';
-import Preview from './pages/Preview/Preview.jsx';
 import Download from './pages/Download/Download.jsx';
 import AboutUs from './pages/AboutUs/AboutUs.jsx';
 import './App.css';
@@ -37,7 +36,6 @@ const App = () => {
             <Route path="/about" element={<AboutUs />} />
             <Route path="/upload" element={<UploadTrack />} />
             <Route path="/selector" element={<Selector />} />
-            <Route path="/preview" element={<Preview />} />
             <Route path="/download" element={<Download />} />
           </Routes>
         </Box>
