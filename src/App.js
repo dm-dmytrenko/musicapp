@@ -8,6 +8,7 @@ import Selector from './pages/Selector/Selector.jsx';
 import Download from './pages/Download/Download.jsx';
 import AboutUs from './pages/AboutUs/AboutUs.jsx';
 import './App.css';
+import theme from './theme.js';
 
 const App = () => {
   return (
