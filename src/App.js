@@ -1,5 +1,5 @@
-// src/App.jsx
 import React from 'react';
+import { ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Box } from '@mui/system';
 import StatusBar from './components/StatusBar/StatusBar.jsx';
@@ -11,6 +11,7 @@ import './App.css';
 
 const App = () => {
   return (
+    <ThemeProvider theme={theme}>
       <Box sx={{ 
         width: '100vw', 
         height: '100vh', 
@@ -39,8 +40,8 @@ const App = () => {
             <Route path="/download" element={<Download />} />
           </Routes>
         </Box>
-
       </Box>
+    </ ThemeProvider>
   );
 };
 
