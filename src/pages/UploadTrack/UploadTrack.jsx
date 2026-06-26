@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
+import * as s from './UploadTrack.styles';
+import { formatTime, generateMockWaveformHeights } from './UploadTrack.utils';
 
 const UploadTrack = () => {
   const [isDraggingFile, setIsDraggingFile] = useState(false);
@@ -40,14 +42,6 @@ const UploadTrack = () => {
     setIsDraggingFile(false);
   };
 
-  const generateMockWaveform = () => {
-    const bars = [];
-    for (let i = 0; i < 60; i++) {
-      bars.push(Math.floor(Math.random() * 75) + 15);
-    }
-    setWaveformBars(bars);
-  };
-
   const processFile = (file) => {
     if (!file) return;
     if (!file.type.startsWith('audio/')) {
@@ -55,9 +49,8 @@ const UploadTrack = () => {
       return;
     }
 
-    // Start the loading state and animation immediately
     setIsUploading(true);
-    generateMockWaveform();
+    setWaveformBars(generateMockWaveformHeights());
 
     const AudioContextClass = window.AudioContext || window.webkitAudioContext;
     audioContextRef.current = new AudioContextClass();
@@ -66,7 +59,6 @@ const UploadTrack = () => {
     reader.onload = (e) => {
       audioContextRef.current.decodeAudioData(e.target.result)
         .then((buffer) => {
-          // Finished! Transition immediately based on real-time decoding completion
           audioBufferRef.current = buffer;
           const duration = buffer.duration;
           setAudioDuration(duration);
@@ -186,12 +178,6 @@ const UploadTrack = () => {
     navigate('/selector', { state: { trimStart: start, trimEnd: end } });
   };
 
-  const formatTime = (time) => {
-    const mins = Math.floor(time / 60);
-    const secs = Math.floor(time % 60);
-    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-  };
-
   const getWindowStyles = () => {
     if (!audioDuration) return { left: '0%', width: '100%' };
     const widthPercent = (15 / audioDuration) * 100;
@@ -200,19 +186,7 @@ const UploadTrack = () => {
   };
 
   return (
-    <Box sx={{
-      width: '100vw',
-      height: '100%',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '0 5%',
-      boxSizing: 'border-box',
-      background: 'transparent', 
-      overflow: 'hidden',
-      fontFamily: "'Inter', sans-serif"
-    }}>
-
+    <Box sx={s.pageWrapperStyles}>
       <input 
         type="file"
         ref={fileInputRef}
@@ -221,27 +195,8 @@ const UploadTrack = () => {
         style={{ display: 'none' }} 
       />
 
-      <Box sx={{
-        width: '100%',
-        maxWidth: '1200px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '4vh',
-        position: 'relative',
-        zIndex: 3,
-        boxSizing: 'border-box'
-      }}>
-        
-        <Box component="h1" sx={{ 
-          fontSize: '4.5vw', 
-          minFontSize: '36px',
-          fontWeight: 800, 
-          color: '#0044cc',  
-          margin: 0,
-          letterSpacing: '-1px',
-          textShadow: '0 2px 10px rgba(0, 68, 204, 0.1)'
-        }}>
+      <Box sx={s.mainStackContainerStyles}>
+        <Box component="h1" sx={s.masterHeadingStyles}>
           {isUploading ? "Analyzing frequencies..." : showTrimmer ? "Select 15s Snippet" : "Upload the track"}
         </Box>
 
@@ -251,87 +206,25 @@ const UploadTrack = () => {
           onDrop={handleDrop}
           onClick={handleContainerClick}
           sx={{
-            width: '100%',
-            height: '45vh',
-            minHeight: '300px',
+            ...s.interactionDropzoneCardStyles,
             background: isDraggingFile ? 'rgba(255, 255, 255, 0.65)' : 'rgba(255, 255, 255, 0.4)',
             border: isDraggingFile ? '3px dashed #0077ff' : '2px solid rgba(255, 255, 255, 0.8)',
-            borderRadius: '32px',
             boxShadow: isDraggingFile 
               ? '0 40px 80px rgba(0, 70, 120, 0.25)' 
               : '0 30px 60px rgba(0, 70, 120, 0.12), inset 0 2px 0 #fff',
-            backdropFilter: 'blur(30px)',
-            WebkitBackdropFilter: 'blur(30px)',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '8px',
             cursor: (isUploading || showTrimmer) ? 'default' : 'pointer',
-            transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
-            boxSizing: 'border-box',
             transform: isDraggingFile ? 'scale(1.01)' : 'scale(1)',
-            position: 'relative',
-            overflow: 'hidden',
             '&:hover': {
               background: (isUploading || showTrimmer) ? 'rgba(255, 255, 255, 0.4)' : 'rgba(255, 255, 255, 0.55)',
               boxShadow: (isUploading || showTrimmer) ? '0 30px 60px rgba(0, 70, 120, 0.12)' : '0 35px 70px rgba(0, 70, 120, 0.18)'
-            },
-            '@keyframes oceanRiseUp': {
-              '0%': { top: '100%' },
-              '100%': { top: '-20%' }
-            },
-            '@keyframes oceanChopLeft': {
-              '0%': { transform: 'rotate(0deg)' },
-              '100%': { transform: 'rotate(360deg)' }
-            },
-            '@keyframes oceanChopRight': {
-              '0%': { transform: 'rotate(0deg)' },
-              '100%': { transform: 'rotate(-360deg)' }
             }
           }}
         >
           {isUploading && (
-            <Box sx={{
-              position: 'absolute',
-              left: 0,
-              width: '100%',
-              height: '140%',
-              zIndex: 1,
-              animation: 'oceanRiseUp 0.8s cubic-bezier(0.1, 0.8, 0.25, 1) forwards'
-            }}>
-              <Box sx={{
-                position: 'absolute',
-                top: 0,
-                left: '-30%',
-                width: '160%',
-                height: '160%',
-                background: 'linear-gradient(to top, #002288 0%, #0044cc 60%, #0077ff 100%)',
-                borderRadius: '43%',
-                animation: 'oceanChopLeft 2.2s linear infinite',
-                opacity: 0.6
-              }} />
-              <Box sx={{
-                position: 'absolute',
-                top: 5,
-                left: '-25%',
-                width: '150%',
-                height: '150%',
-                background: 'linear-gradient(to top, #0033aa 0%, #0055dd 40%, #22bbff 100%)',
-                borderRadius: '40%',
-                animation: 'oceanChopRight 1.7s linear infinite',
-                opacity: 0.85
-              }} />
-              <Box sx={{
-                position: 'absolute',
-                top: 15,
-                left: '-20%',
-                width: '140%',
-                height: '140%',
-                background: 'linear-gradient(to top, #0044cc 0%, #0066ff 40%, #00aaff 85%, rgba(255,255,255,0.8) 100%)',
-                borderRadius: '45%',
-                animation: 'oceanChopLeft 1.2s linear infinite'
-              }} />
+            <Box sx={s.liquidWaveBackdropContainerStyles}>
+              <Box sx={{ ...s.sharedWaveOverlayStyles, top: 0, left: '-30%', width: '160%', height: '160%', background: 'linear-gradient(to top, #002288 0%, #0044cc 60%, #0077ff 100%)', animation: `${s.oceanChopLeft} 2.2s linear infinite`, opacity: 0.6 }} />
+              <Box sx={{ ...s.sharedWaveOverlayStyles, top: 5, left: '-25%', background: 'linear-gradient(to top, #0033aa 0%, #0055dd 40%, #22bbff 100%)', animation: `${s.oceanChopRight} 1.7s linear infinite`, opacity: 0.85 }} />
+              <Box sx={{ ...s.sharedWaveOverlayStyles, top: 15, left: '-20%', width: '140%', height: '140%', background: 'linear-gradient(to top, #0044cc 0%, #0066ff 40%, #00aaff 85%, rgba(255,255,255,0.8) 100%)', animation: `${s.oceanChopLeft} 1.2s linear infinite` }} />
             </Box>
           )}
 
@@ -351,14 +244,7 @@ const UploadTrack = () => {
               </Box>
               
               {!isUploading && (
-                <Box sx={{
-                  fontSize: '1.2vw',
-                  minFontSize: '12px',
-                  fontWeight: 500,
-                  color: 'rgba(0, 68, 204, 0.6)',
-                  userSelect: 'none',
-                  zIndex: 2
-                }}>
+                <Box sx={{ fontSize: '1.2vw', minFontSize: '12px', fontWeight: 500, color: 'rgba(0, 68, 204, 0.6)', userSelect: 'none', zIndex: 2 }}>
                   or click to browse local files
                 </Box>
               )}
@@ -366,30 +252,11 @@ const UploadTrack = () => {
           )}
 
           {showTrimmer && (
-            <Box onClick={(e) => e.stopPropagation()} sx={{ width: '90%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '28px', zIndex: 2 }}>
-              
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                <Box sx={{ color: '#0044cc', fontWeight: 800, fontSize: '16px', background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)', padding: '6px 14px', borderRadius: '14px', border: '1px solid rgba(255,255,255,0.8)' }}>
-                  {formatTime(startTime)}
-                </Box>
+            <Box onClick={(e) => e.stopPropagation()} sx={s.trimmerCentralGridStyles}>
+              <Box sx={s.trimmerLayoutHeaderRowStyles}>
+                <Box sx={s.trimmerBadgeTextStyles}>{formatTime(startTime)}</Box>
 
-                <Box 
-                  onClick={togglePlayback}
-                  sx={{
-                    width: '58px',
-                    height: '58px',
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #22bbff 0%, #0055dd 100%)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    cursor: 'pointer',
-                    boxShadow: '0 8px 20px rgba(0,68,204,0.35), inset 0 1px 1px rgba(255,255,255,0.3)',
-                    transition: 'all 0.15s cubic-bezier(0.4, 0, 0.2, 1)',
-                    '&:hover': { transform: 'scale(1.08)', boxShadow: '0 12px 24px rgba(0,68,204,0.45)' },
-                    '&:active': { transform: 'scale(0.95)' }
-                  }}
-                >
+                <Box onClick={togglePlayback} sx={s.audioPlaybackActionButtonStyles}>
                   {isPlaying ? (
                     <Box sx={{ display: 'flex', gap: '5px' }}>
                       <Box sx={{ width: '4px', height: '18px', background: '#fff', borderRadius: '2px' }} />
@@ -400,30 +267,10 @@ const UploadTrack = () => {
                   )}
                 </Box>
 
-                <Box sx={{ color: '#0044cc', fontWeight: 800, fontSize: '16px', background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(10px)', padding: '6px 14px', borderRadius: '14px', border: '1px solid rgba(255,255,255,0.8)' }}>
-                  {formatTime(startTime + 15)}
-                </Box>
+                <Box sx={s.trimmerBadgeTextStyles}>{formatTime(startTime + 15)}</Box>
               </Box>
 
-              <Box 
-                ref={timelineRef}
-                onMouseDown={handleTimelineMouseDown}
-                sx={{
-                  width: '100%',
-                  height: '85px',
-                  background: 'rgba(0, 68, 204, 0.05)',
-                  borderRadius: '20px',
-                  position: 'relative',
-                  cursor: 'ew-resize',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  padding: '0 12px',
-                  boxSizing: 'border-box',
-                  border: '1px solid rgba(0, 68, 204, 0.08)',
-                  backdropFilter: 'blur(4px)'
-                }}
-              >
+              <Box ref={timelineRef} onMouseDown={handleTimelineMouseDown} sx={s.interactiveTimelineTrackStyles}>
                 {waveformBars.map((barHeight, idx) => (
                   <Box
                     key={idx}
@@ -468,32 +315,13 @@ const UploadTrack = () => {
                     '&::after': { right: '6px' }
                   }}
                 >
-                  <Box sx={{ 
-                    color: '#0044cc', 
-                    fontSize: '10px', 
-                    fontWeight: 900, 
-                    letterSpacing: '1px', 
-                    textShadow: '0 1px 2px rgba(255,255,255,0.6)', 
-                    userSelect: 'none',
-                    background: 'rgba(255,255,255,0.7)',
-                    padding: '2px 8px',
-                    borderRadius: '6px'
-                  }}>
+                  <Box sx={{ color: '#0044cc', fontSize: '10px', fontWeight: 900, letterSpacing: '1px', textShadow: '0 1px 2px rgba(255,255,255,0.6)', userSelect: 'none', background: 'rgba(255,255,255,0.7)', padding: '2px 8px', borderRadius: '6px' }}>
                     15s READY
                   </Box>
                 </Box>
               </Box>
               
-              <Box sx={{ 
-                fontSize: '12px', 
-                fontWeight: 600, color: 
-                'rgba(0, 68, 204, 0.5)', 
-                letterSpacing: '0.2px',
-                userSelect: 'none',
-                WebkitUserSelect: 'none',
-                msUserSelect: 'none',
-                cursor: 'default'
-                }}>
+              <Box sx={s.genericFooterCaptionTextStyles}>
                 Drag preview glass block to change section • Total Track: {formatTime(audioDuration)}
               </Box>
             </Box>
@@ -503,38 +331,26 @@ const UploadTrack = () => {
         <Box 
           onClick={() => !isUploading && handleNavigation(startTime, showTrimmer ? startTime + 15 : audioDuration)} 
           sx={{
-            width: '50%',
+            ...s.workflowStepSubmitButtonBaseStyles,
             background: isUploading 
               ? 'linear-gradient(to bottom, #d5f3ff 0%, #b3d7ff 100%)'
               : 'linear-gradient(to bottom, #7cd8ff 0%, #0077ff 50%, #0055dd 51%, #0088ff 100%)',
-            border: isUploading ? '1px solid #b3d7ff' : '1px solid #0044cc',
-            borderRadius: '20px',
-            padding: '22px',
-            textAlign: 'center',
-            fontSize: '20px',
-            fontWeight: 'bold',
-            color: isUploading ? 'rgba(0, 68, 204, 0.4)' : '#fff',
+            border: isUploading ? '1px solid #b3d7ff' : '1px solid',
+            borderColor: isUploading ? '#b3d7ff' : 'primary.main',
+            color: isUploading ? 'rgba(0, 68, 204, 0.4)' : 'primary.contrastText',
             cursor: isUploading ? 'default' : 'pointer',
-            boxSizing: 'border-box',
-            position: 'relative',
-            overflow: 'hidden',
+            pointerEvents: isUploading ? 'none' : 'auto',
             boxShadow: isUploading ? 'none' : '0 15px 30px rgba(0,85,221,0.2), inset 0 1px 1px rgba(255,255,255,0.5)',
             textShadow: isUploading ? 'none' : '0 1px 3px rgba(0,0,0,0.3)',
-            transition: 'all 0.2s',
-            pointerEvents: isUploading ? 'none' : 'auto',
             '&:hover': {
-              transform: 'translateY(-2px)',
-              boxShadow: '0 20px 40px rgba(0,85,221,0.35)',
-            },
-            '&:active': {
-              transform: 'translateY(0px)'
+              transform: isUploading ? 'none' : 'translateY(-2px)',
+              boxShadow: isUploading ? 'none' : '0 20px 40px rgba(0,85,221,0.35)',
             }
           }}
         >
-          {!isUploading && <Box sx={{ position: 'absolute', top: 0, left: 0, right: 0, height: '50%', background: 'linear-gradient(to bottom, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 100%)' }} />}
+          {!isUploading && <Box sx={s.globalGlossReflectiveSheenStyles} />}
           Next
         </Box>
-
       </Box>
     </Box>
   );
