@@ -9,64 +9,43 @@ import ManifestoSection from './sections/ManifestoSection';
 import FuturePlansSection from './sections/FuturePlansSection';
 import EmailSection from './sections/EmailSection';
 import ActionButton from './components/ActionButton';
+import * as s from './AboutUs.styles';
 
 const AboutUs = () => {
-  const sectionContainerStyles = {
-    width: '100%',
-    minHeight: '100vh',
-    height: '100vh',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    scrollSnapAlign: 'start',
-    boxSizing: 'border-box',
-    padding: '40px 5%'
-  };
-
   return (
-    <Box sx={{
-      width: '100%',
-      height: '100vh',
-      overflowY: 'scroll',
-      scrollSnapType: 'y mandatory',
-      scrollBehavior: 'smooth',
-      boxSizing: 'border-box',
-      background: 'transparent',
-      fontFamily: "'Inter', sans-serif",
-      '&::-webkit-scrollbar': { width: '0px' },
-    }}>
+    <Box sx={s.masterScrollWrapperStyles}>
 
-      <Box sx={sectionContainerStyles}>
+      <Box sx={s.sectionContainerStyles}>
         <HeroSection />
       </Box>
       
-      <Box sx={sectionContainerStyles}>
+      <Box sx={s.sectionContainerStyles}>
         <StruggleSection />
       </Box>
       
-      <Box sx={sectionContainerStyles}>
+      <Box sx={s.sectionContainerStyles}>
         <VibeSection />
       </Box>
       
-      <Box sx={sectionContainerStyles}>
+      <Box sx={s.sectionContainerStyles}>
         <FeaturesSection />
       </Box>
       
-      <Box sx={sectionContainerStyles}>
+      <Box sx={s.sectionContainerStyles}>
         <ManifestoSection />
       </Box>
       
-      <Box sx={sectionContainerStyles}>
+      <Box sx={s.sectionContainerStyles}>
         <FuturePlansSection />
       </Box>
       
-      <Box sx={sectionContainerStyles}>
+      <Box sx={s.sectionContainerStyles}>
         <EmailSection />
       </Box>
 
-      <Box sx={sectionContainerStyles}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '32px', textAlign: 'center' }}>
-          <Box component="h2" sx={{ fontSize: '52px', fontWeight: 900, color: '#0044cc', letterSpacing: '-2px', lineHeight: 1.1, maxWidth: '800px' }}>
+      <Box sx={s.sectionContainerStyles}>
+        <Box sx={s.footerCtaStackStyles}>
+          <Box component="h2" sx={s.footerCtaHeadlineStyles}>
             Stop staring at the canvas.<br />Let your sound lead.
           </Box>
           <ActionButton />

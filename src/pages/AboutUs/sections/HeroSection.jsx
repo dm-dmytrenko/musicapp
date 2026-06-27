@@ -1,19 +1,20 @@
 import React from 'react';
 import { Box } from '@mui/system';
 import ActionButton from '../components/ActionButton';
+import * as s from './HeroSection.styles';
 
 const HeroSection = () => (
-  <Box sx={{ maxWidth: '1100px', width: '100%', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '32px', pt: '4vh' }}>
-    <Box sx={{ fontSize: '14px', fontWeight: 900, color: '#0044cc', letterSpacing: '3px', background: 'rgba(0, 68, 204, 0.08)', padding: '8px 20px', borderRadius: '50px' }}>
+  <Box sx={s.centeredLayoutRootStyles}>
+    <Box sx={s.floatingPillBadgeStyles}>
       INTRODUCING TroisD
     </Box>
-    <Box component="h1" sx={{ fontSize: '64px', fontWeight: 900, color: '#0044cc', margin: 0, lineHeight: 1.05, letterSpacing: '-2.5px' }}>
+    <Box component="h1" sx={s.masterPageHeadlineStyles}>
       Give your music to the world.<br />Without the overhead.
     </Box>
-    <Box sx={{ fontSize: '22px', fontWeight: 500, color: '#0044cc', opacity: 0.8, maxWidth: '750px', lineHeight: 1.5 }}>
+    <Box sx={s.productSubtextDescriptionStyles}>
       We are an independent team building straightforward, automated release tools for bedroom producers and indie artists.
     </Box>
-    <Box sx={{ mt: '12px' }}>
+    <Box sx={s.ctaButtonWrapperStyles}>
       <ActionButton />
     </Box>
   </Box>
