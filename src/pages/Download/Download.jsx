@@ -126,7 +126,7 @@ const Download = () => {
           </Box>
 
           <Box 
-            onClick={() => navigate('/selector')}
+            onClick={() => navigate('/change')}
             sx={{
               ...s.primaryButtonStyles,
               width: '100%',

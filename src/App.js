@@ -7,6 +7,7 @@ import UploadTrack from './pages/UploadTrack/UploadTrack.jsx';
 import Selector from './pages/Selector/Selector.jsx';
 import Download from './pages/Download/Download.jsx';
 import AboutUs from './pages/AboutUs/AboutUs.jsx';
+import Change from './pages/Change/Change.jsx';
 import './App.css';
 import theme from './theme.js';
 
@@ -39,6 +40,7 @@ const App = () => {
             <Route path="/upload" element={<UploadTrack />} />
             <Route path="/selector" element={<Selector />} />
             <Route path="/download" element={<Download />} />
+            <Route path="/change" element={<Change />} />
           </Routes>
         </Box>
       </Box>
