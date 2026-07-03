@@ -1,3 +1,5 @@
+import { sharedStyles } from '../../theme';
+
 export const pageGridContainerStyles = {
   width: '100%',
   maxWidth: '1200px',
@@ -30,18 +32,16 @@ export const verticalCardStackStyles = {
 
 export const controlRowGlassPanelStyles = {
   width: '100%',
-  background: 'rgba(255, 255, 255, 0.4)',
-  border: '2px solid rgba(255, 255, 255, 0.7)',
   borderRadius: '26px',
   padding: '28px 36px',
-  boxSizing: 'border-box',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
   gap: '24px',
-  backdropFilter: 'blur(20px)',
-  WebkitBackdropFilter: 'blur(20px)',
-  boxShadow: '0 20px 40px rgba(0, 70, 120, 0.04)'
+  boxShadow: 25,
+  ...sharedStyles.glassBlur,
+  background: 'background.cardStrong',
+  border: '2px solid rgba(255, 255, 255, 0.7)',
 };
 
 export const configurationFieldLabelStyles = {
@@ -112,8 +112,8 @@ export const commentTextAreaStyles = {
   padding: '20px',
   boxSizing: 'border-box',
   fontSize: '18px',
-  fontFamily: "'Inter', sans-serif",
-  color: '#0044cc',
+  fontFamily: 'typography.fontFamily',
+  color: 'primary.main',
   outline: 'none',
   resize: 'none',
   boxShadow: 'inset 0 3px 6px rgba(0, 68, 204, 0.03)',

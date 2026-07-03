@@ -1,19 +1,21 @@
+import { gradients, sharedStyles } from '../../../theme';
+
 export const sectionGlassCardStyles = {
   width: '100%',
   maxWidth: '1300px',
-  background: 'rgba(255, 255, 255, 0.4)',
-  border: '2px solid rgba(255, 255, 255, 0.8)',
-  borderRadius: '40px',
   padding: '64px',
-  boxShadow: '0 40px 80px rgba(0, 70, 120, 0.05)',
-  backdropFilter: 'blur(20px)',
-  WebkitBackdropFilter: 'blur(20px)',
   display: 'flex',
   flexDirection: 'row',
   gap: '64px',
   flexWrap: 'wrap',
+  alignItems: 'center',
+  background: 'background.cardStrong',
+  border: '2px solid',
+  borderColor: 'background.glassBorderStrong',
+  borderRadius: '40px',
   boxSizing: 'border-box',
-  alignItems: 'center'
+  boxShadow: '0 40px 80px rgba(0, 70, 120, 0.05)',
+  ...sharedStyles.glassBlur,
 };
 
 export const narrativeTextColumnStyles = {
@@ -25,10 +27,8 @@ export const narrativeTextColumnStyles = {
 };
 
 export const highContrastAlertLabelStyles = {
-  fontSize: '13px', 
-  fontWeight: 900, 
-  color: '#ff4444', 
-  letterSpacing: '2px'
+  ...sharedStyles.uppercaseLabel,
+  color: 'error.main',
 };
 
 export const coreProblemHeadingStyles = {
@@ -53,7 +53,7 @@ export const behavioralListWrapperStyles = {
 export const metricsHighlightBoxStyles = {
   flex: '0.8', 
   minWidth: '320px', 
-  background: 'linear-gradient(135deg, rgba(0, 68, 204, 0.06) 0%, rgba(0, 119, 255, 0.02) 100%)', 
+  background: gradients.communityFeature, 
   borderRadius: '28px', 
   padding: '48px 32px', 
   textAlign: 'center',

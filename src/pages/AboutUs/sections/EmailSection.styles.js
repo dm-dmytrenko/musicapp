@@ -1,9 +1,8 @@
+import { sharedStyles } from '../../../theme';
+
 export const sectionContainerStyles = {
   width: '100%',
   maxWidth: '1300px',
-  background: 'rgba(255, 255, 255, 0.4)',
-  border: '2px solid rgba(255, 255, 255, 0.8)',
-  borderRadius: '40px',
   padding: '96px 64px',
   textAlign: 'center',
   display: 'flex',
@@ -11,9 +10,8 @@ export const sectionContainerStyles = {
   alignItems: 'center',
   justifyContent: 'center',
   gap: '56px',
-  boxSizing: 'border-box',
-  boxShadow: '0 40px 80px rgba(0, 70, 120, 0.03)',
-  minHeight: '600px'
+  minHeight: '600px',
+  ...sharedStyles.glassCard,
 };
 
 export const typographyStackStyles = {
@@ -33,9 +31,7 @@ export const mainHeadingStyles = {
 
 export const subcaptionTextStyles = {
   fontSize: '24px', 
-  fontWeight: 500, 
-  color: 'primary.main', 
-  opacity: 0.8, 
+  ...sharedStyles.bodyText,
   maxWidth: '850px', 
   lineHeight: 1.6
 };
@@ -47,8 +43,7 @@ export const inputFormWrapperStyles = {
   background: '#fff', 
   padding: '14px 14px 14px 36px', 
   borderRadius: '32px', 
-  border: '2px solid', 
-  borderColor: 'rgba(0, 68, 204, 0.15)', 
+  border: '2px solid rgba(0, 68, 204, 0.15)', 
   boxSizing: 'border-box', 
   alignItems: 'center', 
   gap: '24px', 

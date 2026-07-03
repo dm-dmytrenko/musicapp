@@ -1,19 +1,14 @@
+import { sharedStyles } from '../../../theme';
+
 export const centeredLayoutRootStyles = {
   maxWidth: '1100px', 
   width: '100%', 
-  display: 'flex', 
-  flexDirection: 'column', 
-  alignItems: 'center', 
+  ...sharedStyles.centeredColumn,
   gap: '24px', 
   textAlign: 'center'
 };
 
-export const uppercasePillLabelStyles = {
-  fontSize: '13px', 
-  fontWeight: 900, 
-  color: 'primary.main', 
-  letterSpacing: '2px'
-};
+export const uppercasePillLabelStyles = { ...sharedStyles.uppercaseLabel };
 
 export const highImpactTitleStyles = {
   fontSize: '42px', 
@@ -24,9 +19,7 @@ export const highImpactTitleStyles = {
 
 export const coreExplanationParagraphStyles = {
   fontSize: '18px', 
-  fontWeight: 500, 
-  color: 'primary.main', 
-  opacity: 0.8, 
+  ...sharedStyles.bodyText,
   maxWidth: '750px', 
   lineHeight: 1.6
 };

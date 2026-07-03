@@ -1,3 +1,5 @@
+import { sharedStyles } from '../../theme';
+
 export const masterScrollWrapperStyles = {
   width: '100%',
   height: '100vh',
@@ -6,7 +8,7 @@ export const masterScrollWrapperStyles = {
   scrollBehavior: 'smooth',
   boxSizing: 'border-box',
   background: 'transparent',
-  fontFamily: "'Inter', sans-serif",
+  fontFamily: 'typography.fontFamily',
   '&::-webkit-scrollbar': { width: '0px' },
 };
 
@@ -23,9 +25,7 @@ export const sectionContainerStyles = {
 };
 
 export const footerCtaStackStyles = {
-  display: 'flex', 
-  flexDirection: 'column', 
-  alignItems: 'center', 
+  ...sharedStyles.centeredColumn,
   gap: '32px', 
   textAlign: 'center'
 };

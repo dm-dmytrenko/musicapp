@@ -1,10 +1,10 @@
+import { sharedStyles } from '../../../theme';
+
 export const centeredLayoutRootStyles = {
   maxWidth: '1100px', 
   width: '100%', 
   textAlign: 'center', 
-  display: 'flex', 
-  flexDirection: 'column', 
-  alignItems: 'center', 
+  ...sharedStyles.centeredColumn,
   gap: '32px', 
   pt: '4vh'
 };
@@ -14,7 +14,7 @@ export const floatingPillBadgeStyles = {
   fontWeight: 900, 
   color: 'primary.main', 
   letterSpacing: '3px', 
-  background: 'rgba(0, 68, 204, 0.08)', 
+  background: 'primary.light', 
   padding: '8px 20px', 
   borderRadius: '50px'
 };
@@ -30,9 +30,7 @@ export const masterPageHeadlineStyles = {
 
 export const productSubtextDescriptionStyles = {
   fontSize: '22px', 
-  fontWeight: 500, 
-  color: 'primary.main', 
-  opacity: 0.8, 
+  ...sharedStyles.bodyText,
   maxWidth: '750px', 
   lineHeight: 1.5
 };

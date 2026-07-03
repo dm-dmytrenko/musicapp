@@ -1,9 +1,9 @@
+import { sharedStyles } from '../../../theme';
+
 export const centralLayoutColumnStyles = {
   maxWidth: '1100px', 
   width: '100%', 
-  display: 'flex', 
-  flexDirection: 'column', 
-  alignItems: 'center', 
+  ...sharedStyles.centeredColumn,
   gap: '32px'
 };
 
@@ -14,12 +14,7 @@ export const alignmentHeaderStackStyles = {
   gap: '8px'
 };
 
-export const smallCategoryLabelStyles = {
-  fontSize: '13px', 
-  fontWeight: 900, 
-  color: 'primary.main', 
-  letterSpacing: '2px'
-};
+export const smallCategoryLabelStyles = { ...sharedStyles.uppercaseLabel };
 
 export const genericTitleHeaderStyles = {
   fontSize: '38px', 
@@ -30,15 +25,13 @@ export const genericTitleHeaderStyles = {
 
 export const timelineCardContainerStyles = {
   width: '100%',
-  background: 'rgba(255,255,255,0.3)',
-  border: '2px solid rgba(255,255,255,0.6)',
   borderRadius: '32px',
   padding: '40px',
-  boxSizing: 'border-box',
   display: 'flex',
   alignItems: 'center',
   gap: '32px',
-  flexWrap: 'wrap'
+  flexWrap: 'wrap',
+  ...sharedStyles.glassCardMedium,
 };
 
 export const standaloneIconAvatarStyles = {
@@ -70,8 +63,6 @@ export const technicalSubheadingStyles = {
 
 export const technicalParagraphTextStyles = {
   fontSize: '15px', 
-  fontWeight: 500, 
-  color: 'primary.main', 
-  opacity: 0.8, 
+  ...sharedStyles.bodyText,
   lineHeight: 1.5
 };

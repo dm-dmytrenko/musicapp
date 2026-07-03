@@ -1,3 +1,5 @@
+import { sharedStyles } from '../../../theme';
+
 export const outerGridContainerStyles = {
   width: '100%', 
   maxWidth: '1350px', 
@@ -13,16 +15,13 @@ export const featureCardColumnStyles = {
   flex: 1,
   minWidth: '360px',
   minHeight: '450px',
-  background: 'rgba(255, 255, 255, 0.3)',
-  border: '2px solid rgba(255, 255, 255, 0.6)',
   borderRadius: '40px',
   padding: '56px',
   display: 'flex',
   flexDirection: 'column',
   gap: '28px',
-  boxSizing: 'border-box',
-  boxShadow: '0 25px 50px rgba(0, 70, 120, 0.02)',
-  justifyContent: 'center'
+  justifyContent: 'center',
+  ...sharedStyles.glassCardMedium,
 };
 
 export const cardHeaderLayoutRowStyles = {
@@ -33,13 +32,9 @@ export const cardHeaderLayoutRowStyles = {
 
 export const geometricIconBoxStyles = {
   fontSize: '36px', 
-  background: 'rgba(0,68,204,0.08)', 
   width: '68px', 
   height: '68px', 
-  borderRadius: '20px', 
-  display: 'flex', 
-  alignItems: 'center', 
-  justifyContent: 'center'
+  ...sharedStyles.iconBadge,
 };
 
 export const uniqueTitleHeadingStyles = {
@@ -51,9 +46,7 @@ export const uniqueTitleHeadingStyles = {
 
 export const genericBulletListContainerStyles = {
   fontSize: '18px', 
-  fontWeight: 500, 
-  color: 'primary.main', 
-  opacity: 0.8, 
+  ...sharedStyles.bodyText,
   lineHeight: 1.7, 
   display: 'flex', 
   flexDirection: 'column', 

@@ -1,4 +1,5 @@
 import { keyframes } from '@mui/system';
+import { gradients, sharedStyles } from '../../theme';
 
 export const oceanRiseUp = keyframes`
   0% { top: 100%; }
@@ -25,7 +26,7 @@ export const pageWrapperStyles = {
   boxSizing: 'border-box',
   background: 'transparent', 
   overflow: 'hidden',
-  fontFamily: "'Inter', sans-serif"
+  fontFamily: 'typography.fontFamily'
 };
 
 export const mainStackContainerStyles = {
@@ -55,8 +56,7 @@ export const interactionDropzoneCardStyles = {
   height: '45vh',
   minHeight: '300px',
   borderRadius: '32px',
-  backdropFilter: 'blur(30px)',
-  WebkitBackdropFilter: 'blur(30px)',
+  ...sharedStyles.glassBlurStrong,
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -115,7 +115,7 @@ export const audioPlaybackActionButtonStyles = {
   width: '58px',
   height: '58px',
   borderRadius: '50%',
-  background: 'linear-gradient(135deg, #22bbff 0%, #0055dd 100%)',
+  background: gradients.playButton,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -147,9 +147,7 @@ export const genericFooterCaptionTextStyles = {
   fontWeight: 600, 
   color: 'rgba(0, 68, 204, 0.5)', 
   letterSpacing: '0.2px',
-  userSelect: 'none',
-  WebkitUserSelect: 'none',
-  msUserSelect: 'none',
+  ...sharedStyles.userSelectNone,
   cursor: 'default'
 };
 
@@ -169,11 +167,4 @@ export const workflowStepSubmitButtonBaseStyles = {
   }
 };
 
-export const globalGlossReflectiveSheenStyles = {
-  position: 'absolute', 
-  top: 0, 
-  left: 0, 
-  right: 0, 
-  height: '50%', 
-  background: 'linear-gradient(to bottom, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 100%)'
-};
+export const globalGlossReflectiveSheenStyles = { ...sharedStyles.glossReflect };

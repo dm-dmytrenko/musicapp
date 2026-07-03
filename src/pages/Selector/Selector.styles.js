@@ -1,3 +1,5 @@
+import { sharedStyles } from '../../theme';
+
 export const viewportWrapperStyles = {
   width: '100vw',
   height: '100%',
@@ -43,9 +45,7 @@ export const generateButtonBaseStyles = {
   boxSizing: 'border-box',
   position: 'relative',
   overflow: 'hidden',
-  userSelect: 'none',
-  WebkitUserSelect: 'none',
-  msUserSelect: 'none',
+  ...sharedStyles.userSelectNone,
   marginTop: '4vh',
   transition: 'all 0.2s',
   '&:active': {
@@ -53,11 +53,4 @@ export const generateButtonBaseStyles = {
   }
 };
 
-export const buttonGlossReflectStyles = {
-  position: 'absolute', 
-  top: 0, 
-  left: 0, 
-  right: 0, 
-  height: '50%', 
-  background: 'linear-gradient(to bottom, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 100%)'
-};
+export const buttonGlossReflectStyles = { ...sharedStyles.glossReflect };
