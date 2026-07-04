@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import { alpha } from '@mui/material/styles';
 import ActionButton from '../../components/ActionButton/ActionButton';
+
+import { PICSUM_API } from '../../config/apiEndpoints';
 
 import * as s from './Download.styles';
 
@@ -23,6 +25,8 @@ const InfoDisplayRow = ({ label, value, onClick }) => (
 const Download = () => {
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
+  const [imageUrl, setImageUrl] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
   
   const albumName = "Super name for album";
   const genreName = "Phrygian Electronic / Industrial";
@@ -41,6 +45,26 @@ const Download = () => {
     console.log("Downloading picture manually...");
   };
 
+  useEffect(() => {
+    const fetchRandomImage = async () => {
+      try {
+        setIsLoading(true);
+        
+        const endpoint = PICSUM_API.getRandomSquareEndpoint(500);
+        const response = await fetch(endpoint);
+        
+        if (!response.ok) throw new Error('Failed to fetch image metadata');
+        setImageUrl(response.url);
+      } catch (error) {
+        console.error("Error executing async image fetch:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchRandomImage();
+  }, []);
+
   return (
     <Box sx={s.pageWrapperStyles}>
       <Box sx={s.contentLayoutGridStyles}>
@@ -49,7 +73,7 @@ const Download = () => {
           onMouseLeave={() => setIsHovered(false)}
           sx={s.previewFrameCardStyles}
         >
-          <Box sx={{
+          {/* <Box sx={{
             fontSize: '7vw',
             minFontSize: '64px',
             lineHeight: 1,
@@ -59,9 +83,9 @@ const Download = () => {
             userSelect: 'none'
           }}>
             🎵
-          </Box>
+          </Box> */}
 
-          <Box sx={{
+          {/* <Box sx={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -72,7 +96,20 @@ const Download = () => {
           }}>
             <Box sx={{ fontSize: '2.2vw', minFontSize: '22px', fontWeight: 700, color: 'primary.main' }}>Art Piece</Box>
             <Box sx={{ fontSize: '2.2vw', minFontSize: '22px', fontWeight: 700, color: 'primary.main' }}>Preview</Box>
-          </Box>
+          </Box> */}
+            {isLoading ? (
+              // Display a placeholder loader state while waiting for the async resolution
+              <Box sx={{ color: 'primary.main', fontSize: '18px', fontWeight: 700 }}>
+                Loading Art...
+              </Box>
+            ) : (
+              <Box 
+                component="img"
+                src={imageUrl}
+                alt="Generated Dynamic Artwork"
+                sx={s.pixelArtImageElementStyles}
+              />
+            )}
 
           <Box sx={{
             position: 'absolute',

@@ -40,6 +40,14 @@ export const previewFrameCardStyles = {
   gap: '15px'
 };
 
+export const pixelArtImageElementStyles = {
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+  borderRadius: '20px',
+  display: 'block'
+};
+
 export const interactivePanelStackStyles = {
   flex: 1,
   maxWidth: '560px',
