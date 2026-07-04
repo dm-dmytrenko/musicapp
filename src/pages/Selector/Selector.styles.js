@@ -1,5 +1,3 @@
-import { sharedStyles } from '../../theme';
-
 export const viewportWrapperStyles = {
   width: '100vw',
   height: '100%',
@@ -33,24 +31,3 @@ export const optionsRowGridStyles = {
   width: '100%',
   transform: 'translateY(-2vh)'
 };
-
-export const generateButtonBaseStyles = {
-  width: '35%',
-  maxWidth: '340px',
-  borderRadius: '20px',
-  padding: '18px',
-  textAlign: 'center',
-  fontSize: '18px',
-  fontWeight: 'bold',
-  boxSizing: 'border-box',
-  position: 'relative',
-  overflow: 'hidden',
-  ...sharedStyles.userSelectNone,
-  marginTop: '4vh',
-  transition: 'all 0.2s',
-  '&:active': {
-    transform: 'translateY(0px)'
-  }
-};
-
-export const buttonGlossReflectStyles = { ...sharedStyles.glossReflect };

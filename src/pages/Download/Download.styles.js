@@ -84,10 +84,6 @@ export const thankYouMessageTextStyles = {
   padding: '0 12px'
 };
 
-export const primaryButtonStyles = { ...sharedStyles.primaryButtonBase };
-
-export const buttonGlossReflectStyles = { ...sharedStyles.glossReflect };
-
 export const iconWrapperStyles = {
   width: '24px',
   height: '24px',

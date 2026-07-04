@@ -150,21 +150,3 @@ export const genericFooterCaptionTextStyles = {
   ...sharedStyles.userSelectNone,
   cursor: 'default'
 };
-
-export const workflowStepSubmitButtonBaseStyles = {
-  width: '50%',
-  borderRadius: '20px',
-  padding: '22px',
-  textAlign: 'center',
-  fontSize: '20px',
-  fontWeight: 'bold',
-  boxSizing: 'border-box',
-  position: 'relative',
-  overflow: 'hidden',
-  transition: 'all 0.2s',
-  '&:active': {
-    transform: 'translateY(0px)'
-  }
-};
-
-export const globalGlossReflectiveSheenStyles = { ...sharedStyles.glossReflect };

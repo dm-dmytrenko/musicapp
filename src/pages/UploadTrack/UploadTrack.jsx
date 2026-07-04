@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
+import ActionButton from '../../components/ActionButton/ActionButton';
 import * as s from './UploadTrack.styles';
 import { formatTime, generateMockWaveformHeights } from './UploadTrack.utils';
 
@@ -328,29 +329,18 @@ const UploadTrack = () => {
           )}
         </Box>
 
-        <Box 
-          onClick={() => !isUploading && handleNavigation(startTime, showTrimmer ? startTime + 15 : audioDuration)} 
+        <ActionButton
+          variant="workflow"
+          disabled={isUploading}
+          onClick={() => handleNavigation(startTime, showTrimmer ? startTime + 15 : audioDuration)}
           sx={{
-            ...s.workflowStepSubmitButtonBaseStyles,
-            background: isUploading 
-              ? 'linear-gradient(to bottom, #d5f3ff 0%, #b3d7ff 100%)'
-              : 'linear-gradient(to bottom, #7cd8ff 0%, #0077ff 50%, #0055dd 51%, #0088ff 100%)',
-            border: isUploading ? '1px solid #b3d7ff' : '1px solid',
-            borderColor: isUploading ? '#b3d7ff' : 'primary.main',
-            color: isUploading ? 'rgba(0, 68, 204, 0.4)' : 'primary.contrastText',
-            cursor: isUploading ? 'default' : 'pointer',
-            pointerEvents: isUploading ? 'none' : 'auto',
-            boxShadow: isUploading ? 'none' : '0 15px 30px rgba(0,85,221,0.2), inset 0 1px 1px rgba(255,255,255,0.5)',
-            textShadow: isUploading ? 'none' : '0 1px 3px rgba(0,0,0,0.3)',
-            '&:hover': {
-              transform: isUploading ? 'none' : 'translateY(-2px)',
-              boxShadow: isUploading ? 'none' : '0 20px 40px rgba(0,85,221,0.35)',
-            }
+            width: '50%',
+            padding: '22px',
+            fontSize: '20px',
           }}
         >
-          {!isUploading && <Box sx={s.globalGlossReflectiveSheenStyles} />}
           Next
-        </Box>
+        </ActionButton>
       </Box>
     </Box>
   );

@@ -31,9 +31,63 @@ export const buttonElementStyles = {
   }
 };
 
+export const workflowButtonBaseStyles = {
+  borderRadius: '20px',
+  textAlign: 'center',
+  fontWeight: 'bold',
+  boxSizing: 'border-box',
+  position: 'relative',
+  overflow: 'hidden',
+  ...sharedStyles.userSelectNone,
+  transition: 'all 0.2s',
+  '&:active': {
+    transform: 'translateY(0px)'
+  }
+};
+
+export const primaryButtonStyles = { ...sharedStyles.primaryButtonBase };
+
 export const linearGlossHighlightStyles = { ...sharedStyles.glossReflectElevated };
+
+export const glossReflectStyles = { ...sharedStyles.glossReflect };
 
 export const internalTextWrapperStyles = {
   position: 'relative',
   zIndex: 2
+};
+
+export const captionStyles = {
+  fontSize: '13px',
+  fontWeight: 700,
+  color: 'primary.main',
+  opacity: 0.6,
+  letterSpacing: '0.5px'
+};
+
+export const disabledButtonStyles = {
+  background: gradients.primaryButtonDisabled,
+  border: '1px solid #b3d7ff',
+  color: 'rgba(0, 68, 204, 0.4)',
+  cursor: 'default',
+  pointerEvents: 'none',
+  boxShadow: 'none',
+  textShadow: 'none',
+  '&:hover': {
+    transform: 'none',
+    boxShadow: 'none',
+  }
+};
+
+export const workflowEnabledButtonStyles = {
+  background: gradients.primaryButton,
+  border: '1px solid',
+  borderColor: 'primary.main',
+  color: 'primary.contrastText',
+  cursor: 'pointer',
+  boxShadow: '0 15px 30px rgba(0,85,221,0.2), inset 0 1px 1px rgba(255,255,255,0.5)',
+  textShadow: '0 1px 3px rgba(0,0,0,0.3)',
+  '&:hover': {
+    transform: 'translateY(-2px)',
+    boxShadow: '0 20px 40px rgba(0,85,221,0.35)',
+  }
 };

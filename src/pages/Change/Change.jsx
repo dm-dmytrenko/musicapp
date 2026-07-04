@@ -36,6 +36,20 @@ const TactileIosSwitch = ({ checked, onClick }) => {
   );
 };
 
+const ConfigToggleRow = ({ label, checked, onToggle }) => (
+  <Box sx={s.controlRowGlassPanelStyles}>
+    <Box sx={s.configurationFieldLabelStyles}>{label}</Box>
+    <TactileIosSwitch checked={checked} onClick={onToggle} />
+  </Box>
+);
+
+const TOGGLE_OPTIONS = [
+  { key: 'name', label: 'Change name' },
+  { key: 'cover', label: 'Change song cover' },
+  { key: 'trackPart', label: 'Use other part of the track' },
+  { key: 'comment', label: 'Add comment to improve results' },
+];
+
 const Change = () => {
   const [switches, setSwitches] = useState({
     name: false,
@@ -56,41 +70,26 @@ const Change = () => {
   return (
     <Box sx={s.pageGridContainerStyles}>
       <Box sx={s.columnsFlexLayoutStyles}>
-        
         <Box sx={s.verticalCardStackStyles}>
-          <Box sx={s.controlRowGlassPanelStyles}>
-            <Box sx={s.configurationFieldLabelStyles}>Change name</Box>
-            <TactileIosSwitch 
-              checked={switches.name} 
-              onClick={() => toggleSwitch('name')} 
+          {TOGGLE_OPTIONS.slice(0, 2).map(({ key, label }) => (
+            <ConfigToggleRow
+              key={key}
+              label={label}
+              checked={switches[key]}
+              onToggle={() => toggleSwitch(key)}
             />
-          </Box>
-
-          <Box sx={s.controlRowGlassPanelStyles}>
-            <Box sx={s.configurationFieldLabelStyles}>Change song cover</Box>
-            <TactileIosSwitch 
-              checked={switches.cover} 
-              onClick={() => toggleSwitch('cover')} 
-            />
-          </Box>
+          ))}
         </Box>
 
         <Box sx={s.verticalCardStackStyles}>
-          <Box sx={s.controlRowGlassPanelStyles}>
-            <Box sx={s.configurationFieldLabelStyles}>Use other part of the track</Box>
-            <TactileIosSwitch 
-              checked={switches.trackPart} 
-              onClick={() => toggleSwitch('trackPart')} 
+          {TOGGLE_OPTIONS.slice(2).map(({ key, label }) => (
+            <ConfigToggleRow
+              key={key}
+              label={label}
+              checked={switches[key]}
+              onToggle={() => toggleSwitch(key)}
             />
-          </Box>
-
-          <Box sx={s.controlRowGlassPanelStyles}>
-            <Box sx={s.configurationFieldLabelStyles}>Add comment to improve results</Box>
-            <TactileIosSwitch 
-              checked={switches.comment} 
-              onClick={() => toggleSwitch('comment')} 
-            />
-          </Box>
+          ))}
 
           <AnimatePresence initial={false}>
             {switches.comment && (
@@ -110,11 +109,12 @@ const Change = () => {
             )}
           </AnimatePresence>
         </Box>
-
       </Box>
 
       <Box sx={s.actionContainerWrapperStyles}>
-        <ActionButton text="Generate" onClick={() => navigate('/download')}/>
+        <ActionButton onClick={() => navigate('/download')}>
+          Generate
+        </ActionButton>
       </Box>
     </Box>
   );

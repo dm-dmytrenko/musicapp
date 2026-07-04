@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import { alpha } from '@mui/material/styles';
+import ActionButton from '../../components/ActionButton/ActionButton';
 
 import * as s from './Download.styles';
 
@@ -88,11 +89,11 @@ const Download = () => {
             transition: 'opacity 0.3s ease',
             zIndex: 3
           }}>
-            <Box 
+            <ActionButton
+              variant="primary"
               onClick={handleDownload}
               sx={{
-                ...s.primaryButtonStyles,
-                pointerEvents: 'auto', 
+                pointerEvents: 'auto',
                 transform: isHovered ? 'scale(1)' : 'scale(0.9)',
                 padding: '16px 48px',
                 fontSize: '18px',
@@ -102,9 +103,8 @@ const Download = () => {
                 }
               }}
             >
-              <Box sx={s.buttonGlossReflectStyles} />
               Download
-            </Box>
+            </ActionButton>
           </Box>
         </Box>
 
@@ -125,10 +125,10 @@ const Download = () => {
             Thanks for using our service. If you want to change something in the final result, then press
           </Box>
 
-          <Box 
+          <ActionButton
+            variant="primary"
             onClick={() => navigate('/change')}
             sx={{
-              ...s.primaryButtonStyles,
               width: '100%',
               padding: '18px',
               fontSize: '20px',
@@ -138,9 +138,8 @@ const Download = () => {
               }
             }}
           >
-            <Box sx={s.buttonGlossReflectStyles} />
             Change
-          </Box>
+          </ActionButton>
         </Box>
 
       </Box>
