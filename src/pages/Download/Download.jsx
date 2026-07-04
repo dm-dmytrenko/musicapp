@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { alpha } from '@mui/material/styles';
 import ActionButton from '../../components/ActionButton/ActionButton';
 
-import { PICSUM_API } from '../../config/apiEndpoints';
+import { PICSUM_API, WORD_API} from '../../config/apiEndpoints';
 
 import * as s from './Download.styles';
 
@@ -26,6 +26,7 @@ const Download = () => {
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
+  const [projectName, setProjectName] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   
   const albumName = "Super name for album";
@@ -45,24 +46,37 @@ const Download = () => {
     console.log("Downloading picture manually...");
   };
 
-  useEffect(() => {
-    const fetchRandomImage = async () => {
+useEffect(() => {
+    const fetchAllProjectData = async () => {
       try {
         setIsLoading(true);
+        const [wordResponse, imageResponse] = await Promise.all([
+          fetch(WORD_API.GET_WORDS(2)),
+          fetch(PICSUM_API.getRandomSquareEndpoint(500))
+        ]);
+
+        if (!wordResponse.ok || !imageResponse.ok) {
+          throw new Error('API pipeline error occurred.');
+        }
+        const wordsArray = await wordResponse.json(); 
         
-        const endpoint = PICSUM_API.getRandomSquareEndpoint(500);
-        const response = await fetch(endpoint);
-        
-        if (!response.ok) throw new Error('Failed to fetch image metadata');
-        setImageUrl(response.url);
+        if (wordsArray && wordsArray.length >= 2) {
+          setProjectName(`${wordsArray[0]} ${wordsArray[1]}`);
+        } else {
+          setProjectName("sonic biscuit"); 
+        }
+
+        setImageUrl(imageResponse.url);
       } catch (error) {
-        console.error("Error executing async image fetch:", error);
+        console.error("Error executing dynamic async data resolution:", error);
+        setProjectName("velvet track");
+        setImageUrl(`https://picsum.photos/500?random=${Math.random()}`);
       } finally {
         setIsLoading(false);
       }
     };
 
-    fetchRandomImage();
+    fetchAllProjectData();
   }, []);
 
   return (
@@ -98,7 +112,6 @@ const Download = () => {
             <Box sx={{ fontSize: '2.2vw', minFontSize: '22px', fontWeight: 700, color: 'primary.main' }}>Preview</Box>
           </Box> */}
             {isLoading ? (
-              // Display a placeholder loader state while waiting for the async resolution
               <Box sx={{ color: 'primary.main', fontSize: '18px', fontWeight: 700 }}>
                 Loading Art...
               </Box>
@@ -146,11 +159,13 @@ const Download = () => {
         </Box>
 
         <Box sx={s.interactivePanelStackStyles}>
-          <InfoDisplayRow 
-            label="ALBUM NAME"
-            value={albumName}
-            onClick={() => handleCopyToClipboard(albumName, "Album name")}
-          />
+          {!isLoading && projectName && (
+            <InfoDisplayRow 
+              label="ALBUM NAME"
+              value={projectName}
+              onClick={() => handleCopyToClipboard(projectName, "Album name")}
+            />
+          )}
 
           <InfoDisplayRow 
             label="GENRE"
