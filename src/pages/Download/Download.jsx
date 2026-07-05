@@ -8,6 +8,13 @@ import { PICSUM_API, WORD_API} from '../../config/apiEndpoints';
 
 import * as s from './Download.styles';
 
+const MUSIC_GENRES = [
+  'Synthwave', 'Lo-Fi Hip Hop', 'Cyberpunk Industrial', 'Phonk', 
+  'Ambient', 'Deep House', 'Future Bass', 'Hyperpop', 'Eurobeat', 
+  'Dreamcore Pop', 'Dark Techno', 'Chillhop', 'Psytrance', 
+  'Vaporwave', 'Garage Rock', 'Glitch Hop', 'Liquid Drum & Bass'
+];
+
 const InfoDisplayRow = ({ label, value, onClick }) => (
   <Box onClick={onClick} sx={s.infoRowStyles}>
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
@@ -27,6 +34,7 @@ const Download = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
   const [projectName, setProjectName] = useState('');
+  const [musicGenre, setMusicGenre] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   
   const albumName = "Super name for album";
@@ -50,6 +58,10 @@ useEffect(() => {
     const fetchAllProjectData = async () => {
       try {
         setIsLoading(true);
+
+        const randomGenre = MUSIC_GENRES[Math.floor(Math.random() * MUSIC_GENRES.length)];
+        setMusicGenre(randomGenre);
+
         const [wordResponse, imageResponse] = await Promise.all([
           fetch(WORD_API.GET_WORDS(2)),
           fetch(PICSUM_API.getRandomSquareEndpoint(500))
@@ -169,8 +181,8 @@ useEffect(() => {
 
           <InfoDisplayRow 
             label="GENRE"
-            value={genreName}
-            onClick={() => handleCopyToClipboard(genreName, "Genre option")}
+            value={musicGenre}
+            onClick={() => handleCopyToClipboard(musicGenre, "Genre option")}
           />
 
           <Box sx={s.thankYouMessageTextStyles}>
