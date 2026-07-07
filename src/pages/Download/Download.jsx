@@ -171,7 +171,7 @@ const Download = () => {
 
           <ActionButton
             variant="primary"
-            onClick={() => navigate('/change')}
+            onClick={() => navigate('/change', { state: { chosenOptions: chosenOptions } })}
             sx={{
               width: '100%',
               padding: '18px',

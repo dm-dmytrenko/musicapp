@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Box } from '@mui/system';
 import { motion, AnimatePresence } from 'framer-motion';
 import ActionButton from '../../components/ActionButton/ActionButton';
@@ -44,8 +44,8 @@ const ConfigToggleRow = ({ label, checked, onToggle }) => (
 );
 
 const TOGGLE_OPTIONS = [
-  { key: 'name', label: 'Change name' },
-  { key: 'cover', label: 'Change song cover' },
+  { key: 'Opt_1', label: 'Change name' },
+  { key: 'Opt_2', label: 'Change song cover' },
   { key: 'trackPart', label: 'Use other part of the track' },
   { key: 'comment', label: 'Add comment to improve results' },
 ];
@@ -58,8 +58,10 @@ const Change = () => {
     comment: false
   });
 
+  const location = useLocation();
   const navigate = useNavigate();
-
+  const chosenOptions = location.state?.chosenOptions || [];
+  console.log("Chosen options received in Change page:", chosenOptions);
   const toggleSwitch = (key) => {
     setSwitches((prev) => ({
       ...prev,
@@ -71,13 +73,15 @@ const Change = () => {
     <Box sx={s.pageGridContainerStyles}>
       <Box sx={s.columnsFlexLayoutStyles}>
         <Box sx={s.verticalCardStackStyles}>
-          {TOGGLE_OPTIONS.slice(0, 2).map(({ key, label }) => (
-            <ConfigToggleRow
-              key={key}
-              label={label}
-              checked={switches[key]}
-              onToggle={() => toggleSwitch(key)}
-            />
+          {TOGGLE_OPTIONS
+            .filter(({ key }) => chosenOptions.includes(key)) 
+            .map(({ key, label }) => (
+              <ConfigToggleRow 
+                key={key}
+                label={label}
+                checked={switches[key]}
+                onChange={() => toggleSwitch(key)}
+              />
           ))}
         </Box>
 
