@@ -20,7 +20,9 @@ const Selector = () => {
 
   const handleGenerate = () => {
     if (!isButtonDisabled) {
-      navigate('/download');
+      console.log("-------------");
+      console.log(selectedOptions, "Sending options from Selector page to Download page");
+      navigate('/download', { state: { chosenOptions: selectedOptions } });
     }
   };
 

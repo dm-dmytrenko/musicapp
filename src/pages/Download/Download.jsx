@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box } from '@mui/system';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { alpha } from '@mui/material/styles';
 import ActionButton from '../../components/ActionButton/ActionButton';
 
@@ -31,14 +31,14 @@ const InfoDisplayRow = ({ label, value, onClick }) => (
 
 const Download = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const chosenOptions = location.state?.chosenOptions || [];
+  console.log("Chosen options received in Download page:", chosenOptions);
   const [isHovered, setIsHovered] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
   const [projectName, setProjectName] = useState('');
   const [musicGenre, setMusicGenre] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  
-  const albumName = "Super name for album";
-  const genreName = "Phrygian Electronic / Industrial";
 
   const handleCopyToClipboard = async (textToCopy, label) => {
     try {
@@ -54,42 +54,42 @@ const Download = () => {
     console.log("Downloading picture manually...");
   };
 
-useEffect(() => {
-    const fetchAllProjectData = async () => {
-      try {
-        setIsLoading(true);
+  useEffect(() => {
+      const fetchAllProjectData = async () => {
+        try {
+          setIsLoading(true);
 
-        const randomGenre = MUSIC_GENRES[Math.floor(Math.random() * MUSIC_GENRES.length)];
-        setMusicGenre(randomGenre);
+          const randomGenre = MUSIC_GENRES[Math.floor(Math.random() * MUSIC_GENRES.length)];
+          setMusicGenre(randomGenre);
 
-        const [wordResponse, imageResponse] = await Promise.all([
-          fetch(WORD_API.GET_WORDS(2)),
-          fetch(PICSUM_API.getRandomSquareEndpoint(500))
-        ]);
+          const [wordResponse, imageResponse] = await Promise.all([
+            fetch(WORD_API.GET_WORDS(2)),
+            fetch(PICSUM_API.getRandomSquareEndpoint(500))
+          ]);
 
-        if (!wordResponse.ok || !imageResponse.ok) {
-          throw new Error('API pipeline error occurred.');
+          if (!wordResponse.ok || !imageResponse.ok) {
+            throw new Error('API pipeline error occurred.');
+          }
+          const wordsArray = await wordResponse.json(); 
+          
+          if (wordsArray && wordsArray.length >= 2) {
+            setProjectName(`${wordsArray[0]} ${wordsArray[1]}`);
+          } else {
+            setProjectName("sonic biscuit"); 
+          }
+
+          setImageUrl(imageResponse.url);
+        } catch (error) {
+          console.error("Error executing dynamic async data resolution:", error);
+          setProjectName("velvet track");
+          setImageUrl(`https://picsum.photos/500?random=${Math.random()}`);
+        } finally {
+          setIsLoading(false);
         }
-        const wordsArray = await wordResponse.json(); 
-        
-        if (wordsArray && wordsArray.length >= 2) {
-          setProjectName(`${wordsArray[0]} ${wordsArray[1]}`);
-        } else {
-          setProjectName("sonic biscuit"); 
-        }
+      };
 
-        setImageUrl(imageResponse.url);
-      } catch (error) {
-        console.error("Error executing dynamic async data resolution:", error);
-        setProjectName("velvet track");
-        setImageUrl(`https://picsum.photos/500?random=${Math.random()}`);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchAllProjectData();
-  }, []);
+      fetchAllProjectData();
+    }, []);
 
   return (
     <Box sx={s.pageWrapperStyles}>
@@ -99,42 +99,20 @@ useEffect(() => {
           onMouseLeave={() => setIsHovered(false)}
           sx={s.previewFrameCardStyles}
         >
-          {/* <Box sx={{
-            fontSize: '7vw',
-            minFontSize: '64px',
-            lineHeight: 1,
-            color: 'primary.main',
-            opacity: isHovered ? 0.05 : 0.2,
-            transition: 'opacity 0.3s ease',
-            userSelect: 'none'
-          }}>
-            🎵
-          </Box> */}
-
-          {/* <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '4px',
-            opacity: isHovered ? 0.05 : 0.2,
-            transition: 'opacity 0.3s ease',
-            userSelect: 'none'
-          }}>
-            <Box sx={{ fontSize: '2.2vw', minFontSize: '22px', fontWeight: 700, color: 'primary.main' }}>Art Piece</Box>
-            <Box sx={{ fontSize: '2.2vw', minFontSize: '22px', fontWeight: 700, color: 'primary.main' }}>Preview</Box>
-          </Box> */}
-            {isLoading ? (
+          {chosenOptions.includes("Opt_2") && (
+            isLoading ? (
               <Box sx={{ color: 'primary.main', fontSize: '18px', fontWeight: 700 }}>
                 Loading Art...
               </Box>
             ) : (
               <Box 
                 component="img"
-                src={imageUrl}
+                src={imageUrl || null}
                 alt="Generated Dynamic Artwork"
                 sx={s.pixelArtImageElementStyles}
               />
-            )}
+            )
+          )}
 
           <Box sx={{
             position: 'absolute',
@@ -171,7 +149,7 @@ useEffect(() => {
         </Box>
 
         <Box sx={s.interactivePanelStackStyles}>
-          {!isLoading && projectName && (
+          {!isLoading && projectName && chosenOptions.includes("Opt_1") && (
             <InfoDisplayRow 
               label="ALBUM NAME"
               value={projectName}
@@ -179,11 +157,13 @@ useEffect(() => {
             />
           )}
 
-          <InfoDisplayRow 
-            label="GENRE"
-            value={musicGenre}
-            onClick={() => handleCopyToClipboard(musicGenre, "Genre option")}
-          />
+          {!isLoading && musicGenre && chosenOptions.includes("Opt_3") && (
+            <InfoDisplayRow 
+              label="GENRE"
+              value={musicGenre}
+              onClick={() => handleCopyToClipboard(musicGenre, "Genre option")}
+            />
+          )}
 
           <Box sx={s.thankYouMessageTextStyles}>
             Thanks for using our service. If you want to change something in the final result, then press
