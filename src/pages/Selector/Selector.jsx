@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setOptions } from '../../store/optionsSlice';
 import OptionTile from '../../components/OptionTile/OptionTile.jsx';
 import ActionButton from '../../components/ActionButton/ActionButton';
 import * as s from './Selector.styles';
@@ -8,6 +10,7 @@ import * as s from './Selector.styles';
 const Selector = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const isButtonDisabled = selectedOptions.length === 0;
 
   const handleTileClick = (optionId) => {
@@ -20,9 +23,8 @@ const Selector = () => {
 
   const handleGenerate = () => {
     if (!isButtonDisabled) {
-      console.log("-------------");
-      console.log(selectedOptions, "Sending options from Selector page to Download page");
-      navigate('/download', { state: { chosenOptions: selectedOptions } });
+      dispatch(setOptions(selectedOptions));
+      navigate('/download');
     }
   };
 

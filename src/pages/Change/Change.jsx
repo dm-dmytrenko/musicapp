@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { Box } from '@mui/system';
 import { motion, AnimatePresence } from 'framer-motion';
 import ActionButton from '../../components/ActionButton/ActionButton';
@@ -58,10 +59,8 @@ const Change = () => {
     comment: false
   });
 
-  const location = useLocation();
   const navigate = useNavigate();
-  const chosenOptions = location.state?.chosenOptions || [];
-  console.log("Chosen options received in Change page:", chosenOptions);
+  const chosenOptions = useSelector((state) => state.options.selectedOptions);
   const toggleSwitch = (key) => {
     setSwitches((prev) => ({
       ...prev,
@@ -80,7 +79,7 @@ const Change = () => {
                 key={key}
                 label={label}
                 checked={switches[key]}
-                onChange={() => toggleSwitch(key)}
+                onToggle={() => toggleSwitch(key)}
               />
           ))}
         </Box>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box } from '@mui/system';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { alpha } from '@mui/material/styles';
 import ActionButton from '../../components/ActionButton/ActionButton';
 
@@ -31,14 +32,13 @@ const InfoDisplayRow = ({ label, value, onClick }) => (
 
 const Download = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const chosenOptions = location.state?.chosenOptions || [];
-  console.log("Chosen options received in Download page:", chosenOptions);
   const [isHovered, setIsHovered] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
   const [projectName, setProjectName] = useState('');
   const [musicGenre, setMusicGenre] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+
+  const chosenOptions = useSelector((state) => state.options.selectedOptions);
 
   const handleCopyToClipboard = async (textToCopy, label) => {
     try {
@@ -171,7 +171,7 @@ const Download = () => {
 
           <ActionButton
             variant="primary"
-            onClick={() => navigate('/change', { state: { chosenOptions: chosenOptions } })}
+            onClick={() => navigate('/change')}
             sx={{
               width: '100%',
               padding: '18px',
