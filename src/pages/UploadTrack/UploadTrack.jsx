@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
+import { useAudioFile } from '../../context/AudioContext';
 import ActionButton from '../../components/ActionButton/ActionButton';
 import * as s from './UploadTrack.styles';
 import { formatTime, generateMockWaveformHeights } from './UploadTrack.utils';
@@ -13,15 +14,16 @@ const UploadTrack = () => {
   const [audioDuration, setAudioDuration] = useState(0);
   const [startTime, setStartTime] = useState(0);
   const [waveformBars, setWaveformBars] = useState([]);
+  const { setRawTrackFile } = useAudioFile();
 
-  const navigate = useNavigate();
   const fileInputRef = useRef(null);
   const timelineRef = useRef(null);
-  
   const audioContextRef = useRef(null);
   const audioBufferRef = useRef(null);
   const sourceNodeRef = useRef(null);
   const isDraggingWindow = useRef(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isPlaying) {
@@ -99,7 +101,14 @@ const UploadTrack = () => {
   const handleFileChange = (e) => {
     const files = e.target.files;
     if (files.length > 0) {
-      processFile(files[0]);
+      const file = files[0];
+
+      if (file.size > 50 * 1024 * 1024) {
+        alert("File is too large! Please upload an audio file under 50MB.");
+        return; 
+      }
+      setRawTrackFile(file);
+      processFile(file);
     }
   };
 
