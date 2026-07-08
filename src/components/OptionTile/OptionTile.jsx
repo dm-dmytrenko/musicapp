@@ -14,9 +14,13 @@ const OptionTile = ({ optionNum, icon, labelLine1, labelLine2, isSelected, onCli
 
       <Box sx={s.centerContentBodyStyles}>
         <Box sx={s.oversizedIconTextStyles}>{icon}</Box>
-        <span className="pixel-text" style={s.labelTypographyInlineStyles}>
-          {labelLine1}<br />{labelLine2}
-        </span>
+          <Box 
+            component="span" 
+            className="pixel-text" 
+            sx={s.labelTypographyInlineStyles}
+          >
+            {labelLine1}<br />{labelLine2}
+          </Box>
       </Box>
     </Box>
   );

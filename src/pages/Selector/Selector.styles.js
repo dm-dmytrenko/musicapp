@@ -23,11 +23,21 @@ export const mainContentContainerStyles = {
 };
 
 export const optionsRowGridStyles = {
-  display: 'flex', 
-  flexDirection: 'row', 
+  display: 'grid', 
+  gridTemplateColumns: 'repeat(3, 1fr)',
   gap: '3.5%',
   justifyContent: 'center',
   alignItems: 'center',
   width: '100%',
-  transform: 'translateY(-2vh)'
+  maxWidth: '1200px',
+  margin: '0 auto',
+  transform: 'translateY(-2vh)',
+
+  '@media (max-width: 850px)': {
+    gridTemplateColumns: '1fr',
+    gap: '16px',
+    maxWidth: '500px',
+    transform: 'translateY(0)',
+    padding: '0 20px',
+  }
 };

@@ -1,10 +1,12 @@
 import { gradients, sharedStyles } from '../../theme';
 
 export const tileCardRootStyles = (isSelected) => ({
-  flex: 1,
   maxWidth: '420px',
-  aspectRatio: '1 / 1',
+  width: '100%',
   height: 'auto',
+  minHeight: 0,
+  aspectRatio: '1 / 1',
+  containerType: 'inline-size',
   background: isSelected ? 'rgba(255, 255, 255, 0.75)' : 'background.cardStrong',
   border: isSelected ? '3px solid' : '2px solid',
   borderColor: isSelected ? '#0077ff' : 'background.glassBorder',
@@ -14,6 +16,7 @@ export const tileCardRootStyles = (isSelected) => ({
   ...sharedStyles.glassBlurStrong,
   display: 'flex',
   flexDirection: 'column',
+  position: 'relative',
   cursor: 'pointer',
   transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
   boxSizing: 'border-box',
@@ -23,6 +26,14 @@ export const tileCardRootStyles = (isSelected) => ({
     transform: isSelected ? 'translateY(-18px) scale(1.02)' : 'translateY(-12px)',
     background: isSelected ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.6)',
     boxShadow: isSelected ? '0 60px 100px rgba(0, 119, 255, 0.35)' : '0 50px 90px rgba(0, 70, 120, 0.2)'
+  },
+  '@media (max-width: 850px)': {
+    aspectRatio: 'unset',      
+    width: '100%',
+    height: '160px',
+    padding: '16px 28px',
+    borderRadius: '24px',
+    transform: isSelected ? 'scale(1.02)' : 'none',
   }
 });
 
@@ -30,7 +41,7 @@ export const ribbonHeaderStyles = {
   background: gradients.primaryButton,
   color: 'primary.contrastText',
   padding: '16px 28px',
-  fontSize: '24px',
+  fontSize: '7cqw',
   fontWeight: 'bold',
   display: 'flex',
   justifyContent: 'space-between',
@@ -39,7 +50,11 @@ export const ribbonHeaderStyles = {
   borderRadius: '22px 22px 4px 4px',
   boxShadow: 'inset 0 2px 2px rgba(255, 255, 255, 0.5)',
   textShadow: '0 2px 4px rgba(0, 0, 0, 0.35)',
-  flexShrink: 0
+  flexShrink: 0,
+  '@media (max-width: 850px)': {
+    height: '32px',
+    fontSize: '12px'
+  }
 };
 
 export const centerContentBodyStyles = {
@@ -50,18 +65,53 @@ export const centerContentBodyStyles = {
   justifyContent: 'center', 
   padding: '28px', 
   textAlign: 'center', 
-  gap: '8%'
+  gap: '8%',
+  '@media (max-width: 850px)': {
+    flexDirection: 'row',       
+    justifyContent: 'flex-start', 
+    alignItems: 'center',         
+    gap: '24px',                  
+    padding: 0,
+    marginTop: '15px'
+  }
 };
 
 export const oversizedIconTextStyles = {
-  fontSize: '110px', 
-  filter: 'drop-shadow(0 16px 28px rgba(0, 40, 100, 0.25))'
+  fontSize: {
+    xs: '2.5rem',
+    md: '3.5rem',
+    lg: '5rem',
+  },
+  filter: 'drop-shadow(0 16px 28px rgba(0, 40, 100, 0.25))',
+  '@media (max-width: 850px)': {
+    fontSize: '40px',
+    marginBottom: 0,
+    paddingLeft: '25px',
+  }
 };
 
 export const labelTypographyInlineStyles = {
-  fontSize: '22px', 
+  fontSize: {
+    xs: '14px',
+    sm: '16px',
+    md: '19px',
+    lg: '22px'
+  }, 
+  lineHeight: {
+    xs: '1.3',
+    md: '1.6'
+  },
   color: 'primary.main', 
   fontWeight: 700, 
-  lineHeight: '1.6', 
-  letterSpacing: 0
+  letterSpacing: 0,
+  textAlign: 'center',
+  width: '100%',
+  display: 'block',
+  '@media (max-width: 850px)': {
+    fontSize: '15px',
+    textAlign: 'center',   
+    lineHeight: '1.2',
+    flexGrow: 1,
+    marginRight: '24px',
+  }
 };
