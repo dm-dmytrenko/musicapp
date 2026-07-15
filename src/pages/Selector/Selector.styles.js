@@ -7,6 +7,7 @@ export const viewportWrapperStyles = {
   padding: '2vh 5%',
   boxSizing: 'border-box',
   background: 'transparent',
+  minWidth: '350px',
   overflow: 'hidden'
 };
 
@@ -33,11 +34,12 @@ export const optionsRowGridStyles = {
   margin: '0 auto',
   transform: 'translateY(-2vh)',
 
-  '@media (max-width: 850px)': {
-    gridTemplateColumns: '1fr',
+  '@media (max-width: 900px)': {
+    gridTemplateColumns: 'minmax(0, 400px)',
+    justifyContent: 'center',
+    alignItems: 'center',
     gap: '16px',
     maxWidth: '500px',
     transform: 'translateY(0)',
-    padding: '0 20px',
   }
 };

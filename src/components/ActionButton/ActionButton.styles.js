@@ -66,6 +66,7 @@ export const captionStyles = {
 
 export const disabledButtonStyles = {
   background: gradients.primaryButtonDisabled,
+  boxSizing: 'border-box',
   border: '1px solid #b3d7ff',
   color: 'rgba(0, 68, 204, 0.4)',
   cursor: 'default',

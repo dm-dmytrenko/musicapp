@@ -63,8 +63,11 @@ const Selector = () => {
           disabled={isButtonDisabled}
           onClick={handleGenerate}
           sx={{
-            width: '35%',
-            maxWidth: '340px',
+            width: {
+              xs: '35%',
+              md: '100%',
+    },
+            maxWidth: '500px',
             padding: '18px',
             fontSize: '18px',
             marginTop: '4vh',
