@@ -2,12 +2,15 @@ import { gradients, sharedStyles } from '../../theme';
 
 export const pageWrapperStyles = {
   width: '100%',
+  minWidth: '350px',
   height: '100vh',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  padding: '0 5%',
+  padding: '10px 5%',
+  overflow: 'hidden',
+  boxSizing: 'border-box',
   fontFamily: 'typography.fontFamily'
 };
 
@@ -18,7 +21,11 @@ export const contentLayoutGridStyles = {
   flexDirection: 'row',
   gap: '7vw',
   justifyContent: 'center',
-  alignItems: 'center'
+  alignItems: 'center',
+  '@media (max-width: 950px)': {
+    flexDirection: 'column',
+    gap: '12px'
+  }
 };
 
 export const previewFrameCardStyles = {
@@ -37,12 +44,23 @@ export const previewFrameCardStyles = {
   justifyContent: 'center',
   position: 'relative',
   overflow: 'hidden',
-  gap: '15px'
+  gap: '15px',
+  '@media (max-width: 950px)': {
+    maxWidth: '50%',
+    borderRadius: '24px',
+    aspectRatio: '1 / 1',
+  },
+  '@media (max-width: 500px)': {
+    width: '100%',
+    maxWidth: '320px',
+    aspectRatio: '1 / 1',
+  }
 };
 
 export const pixelArtImageElementStyles = {
   width: '100%',
-  height: '100%',
+  height: 'auto',
+  aspectRatio: '1 / 1',
   objectFit: 'cover',
   borderRadius: '20px',
   display: 'block'
@@ -53,7 +71,15 @@ export const interactivePanelStackStyles = {
   maxWidth: '560px',
   display: 'flex',
   flexDirection: 'column',
-  gap: '3.5vh'
+  gap: '3.5vh',
+  '@media (max-width: 950px)': {
+    gap: '2.5vh',
+  },
+  '@media (max-width: 500px)': {
+    width: '100%',
+    maxWidth: '320px',
+    gap: '6px',
+  }
 };
 
 export const infoRowStyles = {
@@ -64,10 +90,17 @@ export const infoRowStyles = {
   alignItems: 'center',
   cursor: 'pointer',
   ...sharedStyles.glassCardInteractive,
+  '@media (max-width: 950px)': {
+    padding: '10px 16px',
+    borderRadius: '16px',
+  },
+  '@media (max-width: 500px)': {
+    padding: '12px 12px',
+  }
 };
 
 export const infoRowLabelStyles = {
-  fontSize: '13px',
+  fontSize: '1.8vw',
   fontWeight: 800,
   color: 'primary.main',
   opacity: 0.6,
@@ -89,7 +122,11 @@ export const thankYouMessageTextStyles = {
   lineHeight: '1.6',
   textAlign: 'center',
   marginTop: '1.5vh',
-  padding: '0 12px'
+  padding: '0 12px',
+  '@media (max-width: 500px)': {
+    fontSize: '9px',
+    margin: '4px 0',
+  }
 };
 
 export const iconWrapperStyles = {
