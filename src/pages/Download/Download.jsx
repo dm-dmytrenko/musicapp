@@ -94,59 +94,59 @@ const Download = () => {
   return (
     <Box sx={s.pageWrapperStyles}>
       <Box sx={s.contentLayoutGridStyles}>
-        <Box 
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          sx={s.previewFrameCardStyles}
-        >
-          {chosenOptions.includes("Opt_2") && (
-            isLoading ? (
-              <Box sx={{ color: 'primary.main', fontSize: '18px', fontWeight: 700 }}>
-                Loading Art...
-              </Box>
-            ) : (
-              <Box 
-                component="img"
-                src={imageUrl || null}
-                alt="Generated Dynamic Artwork"
-                sx={s.pixelArtImageElementStyles}
-              />
-            )
-          )}
+        {chosenOptions.includes("Opt_2") && (
+          <Box 
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            sx={s.previewFrameCardStyles}
+          >
+            {isLoading ? (
+                <Box sx={{ color: 'primary.main', fontSize: '18px', fontWeight: 700 }}>
+                  Loading Art...
+                </Box>
+              ) : (
+                <Box 
+                  component="img"
+                  src={imageUrl || null}
+                  alt="Generated Dynamic Artwork"
+                  sx={s.pixelArtImageElementStyles}
+                />
+              )}
 
-          <Box sx={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            background: (theme) => alpha(theme.palette.primary.main, 0.05),
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            opacity: isHovered ? 1 : 0,
-            pointerEvents: 'none', 
-            transition: 'opacity 0.3s ease',
-            zIndex: 3
-          }}>
-            <ActionButton
-              variant="primary"
-              onClick={handleDownload}
-              sx={{
-                pointerEvents: 'auto',
-                transform: isHovered ? 'scale(1)' : 'scale(0.9)',
-                padding: '16px 48px',
-                fontSize: '18px',
-                '&:hover': {
-                  transform: 'scale(1.05)',
-                  boxShadow: '0 25px 50px rgba(0,85,221,0.45)'
-                }
-              }}
-            >
-              Download
-            </ActionButton>
+            <Box sx={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              background: (theme) => alpha(theme.palette.primary.main, 0.05),
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              opacity: isHovered ? 1 : 0,
+              pointerEvents: 'none', 
+              transition: 'opacity 0.3s ease',
+              zIndex: 3
+            }}>
+              <ActionButton
+                variant="primary"
+                onClick={handleDownload}
+                sx={{
+                  pointerEvents: 'auto',
+                  transform: isHovered ? 'scale(1)' : 'scale(0.9)',
+                  padding: '16px 48px',
+                  fontSize: '18px',
+                  '&:hover': {
+                    transform: 'scale(1.05)',
+                    boxShadow: '0 25px 50px rgba(0,85,221,0.45)'
+                  }
+                }}
+              >
+                Download
+              </ActionButton>
+            </Box>
           </Box>
-        </Box>
+        )}
 
         <Box sx={s.interactivePanelStackStyles}>
           {!isLoading && projectName && chosenOptions.includes("Opt_1") && (
