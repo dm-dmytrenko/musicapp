@@ -53,14 +53,15 @@ const TOGGLE_OPTIONS = [
 
 const Change = () => {
   const [switches, setSwitches] = useState({
-    name: false,
-    cover: false,
+    Opt_1: false,
+    Opt_2: false,
     trackPart: false,
     comment: false
   });
 
   const navigate = useNavigate();
   const chosenOptions = useSelector((state) => state.options.selectedOptions);
+  
   const toggleSwitch = (key) => {
     setSwitches((prev) => ({
       ...prev,
@@ -68,51 +69,56 @@ const Change = () => {
     }));
   };
 
+  const visibleOptions = [
+    ...TOGGLE_OPTIONS.slice(0, 2).filter(({ key }) => chosenOptions.includes(key)),
+    ...TOGGLE_OPTIONS.slice(2)
+  ];
+
   return (
     <Box sx={s.pageGridContainerStyles}>
-      <Box sx={s.columnsFlexLayoutStyles}>
-        <Box sx={s.verticalCardStackStyles}>
-          {TOGGLE_OPTIONS
-            .filter(({ key }) => chosenOptions.includes(key)) 
-            .map(({ key, label }) => (
-              <ConfigToggleRow 
-                key={key}
-                label={label}
-                checked={switches[key]}
-                onToggle={() => toggleSwitch(key)}
-              />
-          ))}
-        </Box>
-
-        <Box sx={s.verticalCardStackStyles}>
-          {TOGGLE_OPTIONS.slice(2).map(({ key, label }) => (
-            <ConfigToggleRow
-              key={key}
-              label={label}
-              checked={switches[key]}
-              onToggle={() => toggleSwitch(key)}
-            />
-          ))}
-
-          <AnimatePresence initial={false}>
-            {switches.comment && (
-              <MotionBox
-                sx={s.commentsWrapperAnimatedContainerStyles}
-                initial={{ height: 0, opacity: 0, marginTop: 0 }}
-                animate={{ height: 'auto', opacity: 1, marginTop: 12 }}
-                exit={{ height: 0, opacity: 0, marginTop: 0 }}
-                transition={{ duration: 0.3, ease: 'easeInOut' }}
-              >
-                <Box 
-                  component="textarea" 
-                  placeholder="Describe adjustments here (e.g. make the titles darker, choose futuristic visuals)..."
-                  sx={s.commentTextAreaStyles}
-                />
-              </MotionBox>
-            )}
-          </AnimatePresence>
-        </Box>
+      <Box 
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: visibleOptions.length === 1 ? '1fr' : '1fr 1fr',
+          gap: '16px',
+          width: '100%',
+          maxWidth: '820px',
+          margin: '0 auto',
+          alignItems: 'stretch'
+        }}
+      >
+        {visibleOptions.map(({ key, label }) => (
+          <ConfigToggleRow 
+            key={key}
+            label={label}
+            checked={switches[key]}
+            onToggle={() => toggleSwitch(key)}
+          />
+        ))}
       </Box>
+
+      <AnimatePresence initial={false}>
+        {switches.comment && (
+          <MotionBox
+            sx={{
+              ...s.commentsWrapperAnimatedContainerStyles,
+              maxWidth: '680px',
+              width: '100%',
+              margin: '0 auto'
+            }}
+            initial={{ height: 0, opacity: 0, marginTop: 0 }}
+            animate={{ height: 'auto', opacity: 1, marginTop: 16 }}
+            exit={{ height: 0, opacity: 0, marginTop: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+          >
+            <Box 
+              component="textarea" 
+              placeholder="Describe adjustments here (e.g. make the titles darker, choose futuristic visuals)..."
+              sx={s.commentTextAreaStyles}
+            />
+          </MotionBox>
+        )}
+      </AnimatePresence>
 
       <Box sx={s.actionContainerWrapperStyles}>
         <ActionButton onClick={() => navigate('/download')}>
