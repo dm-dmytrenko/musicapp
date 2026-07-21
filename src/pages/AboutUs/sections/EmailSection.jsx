@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box } from '@mui/system';
+import ActionButton from '../../../components/ActionButton/ActionButton';
 import * as s from './EmailSection.styles';
 
 const EmailSection = () => (
@@ -20,9 +21,12 @@ const EmailSection = () => (
         placeholder="Enter your email address" 
         sx={s.nativeInputStyles} 
       />
-      <Box sx={s.submitButtonStyles}>
-        Follow List
-      </Box>
+      <ActionButton
+        onClick={() => {}}
+        sx={s.actionButtonOverrideStyles}
+      >
+        Follow
+      </ActionButton>
     </Box>
   </Box>
 );

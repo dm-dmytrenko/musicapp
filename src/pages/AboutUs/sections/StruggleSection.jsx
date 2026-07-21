@@ -6,7 +6,7 @@ const StruggleSection = () => (
   <Box sx={s.sectionGlassCardStyles}>
     <Box sx={s.narrativeTextColumnStyles}>
       <Box sx={s.highContrastAlertLabelStyles}>THE 24-HOUR STRUGGLE</Box>
-      <Box sx={s.coreProblemHeadingStyles}>
+      <Box component="h2" sx={s.coreProblemHeadingStyles}>
         Staring at a blank screen kills your momentum.
       </Box>
       <Box sx={s.behavioralListWrapperStyles}>

@@ -7,7 +7,7 @@ const ManifestoSection = () => (
   <Box sx={s.panelWrapperCardStyles}>
     <Box sx={s.primaryTitleLayoutStackStyles}>
       <Box sx={s.absolutePolicyTagLabelStyles}>OUR NO-SCAM POLICY</Box>
-      <Box sx={s.highImpactHeadlineStyles}>
+      <Box component="h2" sx={s.highImpactHeadlineStyles}>
         No accounts. No forcing. Just focus on the music.
       </Box>
     </Box>

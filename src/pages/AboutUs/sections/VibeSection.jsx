@@ -5,7 +5,7 @@ import * as s from './VibeSection.styles';
 const VibeSection = () => (
   <Box sx={s.centeredLayoutRootStyles}>
     <Box sx={s.uppercasePillLabelStyles}>HOW IT WORKS</Box>
-    <Box sx={s.highImpactTitleStyles}>
+    <Box component="h2" sx={s.highImpactTitleStyles}>
       Give us 15 seconds. We map the vibe.
     </Box>
     <Box sx={s.coreExplanationParagraphStyles}>

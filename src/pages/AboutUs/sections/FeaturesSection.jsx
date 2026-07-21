@@ -27,7 +27,7 @@ const FeaturesSection = () => (
       <Box key={title} sx={s.featureCardColumnStyles}>
         <Box sx={s.cardHeaderLayoutRowStyles}>
           <Box sx={s.geometricIconBoxStyles}>{icon}</Box>
-          <Box sx={s.uniqueTitleHeadingStyles}>{title}</Box>
+          <Box component="h3" sx={s.uniqueTitleHeadingStyles}>{title}</Box>
         </Box>
         <Box sx={s.genericBulletListContainerStyles}>
           {bullets.map((bullet, index) => (

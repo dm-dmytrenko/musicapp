@@ -22,7 +22,11 @@ const HeroSection = () => {
         <ActionButton
           onClick={() => navigate('/upload')}
           caption="It is free. Forever."
-          sx={{ fontSize: '18px', fontWeight: 800 }}
+          sx={{
+            fontSize: { xs: '16px', sm: '18px' },
+            fontWeight: 800,
+            padding: { xs: '14px 32px', sm: '16px 48px' }
+          }}
         >
           Try it Free
         </ActionButton>
