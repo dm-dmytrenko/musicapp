@@ -46,9 +46,15 @@ export const previewFrameCardStyles = {
   overflow: 'hidden',
   gap: '15px',
   '@media (max-width: 950px)': {
-    maxWidth: '50%',
+    maxWidth: '39%',
     borderRadius: '24px',
     aspectRatio: '1 / 1',
+  },
+  '@media (max-width: 850px)': {
+    maxWidth: '45%',
+  },
+  '@media (max-width: 800px)': {
+    maxWidth: '50%',
   },
   '@media (max-width: 500px)': {
     width: '100%',
