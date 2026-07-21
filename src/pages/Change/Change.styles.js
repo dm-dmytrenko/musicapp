@@ -2,29 +2,31 @@ import { sharedStyles } from '../../theme';
 
 export const pageGridContainerStyles = {
   width: '100%',
+  minWidth: '350px',
   maxWidth: '1200px',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   gap: '32px',
   boxSizing: 'border-box',
-  padding: '24px'
+  padding: { xs: '16px', sm: '24px' }
 };
 
 export const columnsFlexLayoutStyles = {
   width: '100%',
-  display: 'flex',
-  flexDirection: 'row',
-  gap: '32px',
-  flexWrap: 'wrap',
-  justifyContent: 'center',
-  alignItems: 'flex-start'
+  maxWidth: { xs: '100%', sm: '520px', md: '1040px' },
+  display: 'grid',
+  gridTemplateColumns: { 
+    xs: '1fr', 
+    '@media (min-width: 800px)': '1fr 1fr' 
+  },
+  gap: { xs: '12px', md: '16px' },
+  margin: '0 auto',
+  alignItems: 'stretch'
 };
 
 export const verticalCardStackStyles = {
-  flex: 1,
-  minWidth: '360px',
-  maxWidth: '540px',
+  width: '100%',
   display: 'flex',
   flexDirection: 'column',
   gap: '20px'
@@ -33,19 +35,21 @@ export const verticalCardStackStyles = {
 export const controlRowGlassPanelStyles = {
   width: '100%',
   borderRadius: '26px',
-  padding: '28px 36px',
+  padding: { xs: '16px 20px', sm: '20px 28px', md: '24px 36px' },
+  minHeight: '80px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  gap: '24px',
+  gap: '16px',
   boxShadow: 25,
+  boxSizing: 'border-box',
   ...sharedStyles.glassBlur,
   background: 'background.cardStrong',
   border: '2px solid rgba(255, 255, 255, 0.7)',
 };
 
 export const configurationFieldLabelStyles = {
-  fontSize: '23px',
+  fontSize: { xs: '16px', sm: '18px', md: '22px' },
   fontWeight: 700,
   color: 'primary.main',
   letterSpacing: '-0.5px',
@@ -99,6 +103,8 @@ export const switchHandleThumbStyles = {
 
 export const commentsWrapperAnimatedContainerStyles = {
   width: '100%',
+  maxWidth: { xs: '100%', sm: '520px', md: '1040px' },
+  margin: '0 auto',
   boxSizing: 'border-box',
   overflow: 'hidden'
 };
@@ -111,7 +117,7 @@ export const commentTextAreaStyles = {
   borderRadius: '22px',
   padding: '20px',
   boxSizing: 'border-box',
-  fontSize: '18px',
+  fontSize: { xs: '13px', sm: '14px', md: '15px' },
   fontFamily: 'typography.fontFamily',
   color: 'primary.main',
   outline: 'none',
@@ -131,8 +137,8 @@ export const actionContainerWrapperStyles = {
   justifyContent: 'center',
   mt: '8px',
   '& button': {
-    padding: '24px 140px',
-    fontSize: '28px',
+    padding: { xs: '16px 40px', sm: '20px 80px', md: '24px 140px' },
+    fontSize: { xs: '20px', sm: '24px', md: '28px' },
     borderRadius: '40px',
     width: '100%',
     maxWidth: '520px'

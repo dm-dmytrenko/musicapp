@@ -74,15 +74,21 @@ const Change = () => {
     ...TOGGLE_OPTIONS.slice(2)
   ];
 
+  const contentMaxWidth = visibleOptions.length === 1 
+    ? '520px' 
+    : { xs: '100%', sm: '520px', md: '820px' };
+
   return (
     <Box sx={s.pageGridContainerStyles}>
       <Box 
         sx={{
           display: 'grid',
-          gridTemplateColumns: visibleOptions.length === 1 ? '1fr' : '1fr 1fr',
-          gap: '16px',
+          gridTemplateColumns: visibleOptions.length === 1 
+            ? '1fr' 
+            : { xs: '1fr', md: '1fr 1fr' },
+          gap: { xs: '12px', md: '16px' },
+          maxWidth: contentMaxWidth,
           width: '100%',
-          maxWidth: '820px',
           margin: '0 auto',
           alignItems: 'stretch'
         }}
@@ -102,7 +108,7 @@ const Change = () => {
           <MotionBox
             sx={{
               ...s.commentsWrapperAnimatedContainerStyles,
-              maxWidth: '680px',
+              maxWidth: contentMaxWidth,
               width: '100%',
               margin: '0 auto'
             }}
