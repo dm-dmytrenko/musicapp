@@ -241,7 +241,7 @@ const UploadTrack = () => {
           {!showTrimmer && (
             <>
               <Box sx={{ 
-                fontSize: '3.5vw',
+                fontSize: { xs: '20px', sm: '26px', md: '32px' },
                 fontWeight: 700, 
                 color: isUploading ? '#fff' : '#0055dd',
                 userSelect: 'none',
@@ -254,7 +254,13 @@ const UploadTrack = () => {
               </Box>
               
               {!isUploading && (
-                <Box sx={{ fontSize: '1.2vw', minFontSize: '12px', fontWeight: 500, color: 'rgba(0, 68, 204, 0.6)', userSelect: 'none', zIndex: 2 }}>
+                <Box sx={{ 
+                  fontSize: { xs: '12px', sm: '14px', md: '16px' }, 
+                  fontWeight: 500, 
+                  color: 'rgba(0, 68, 204, 0.6)', 
+                  userSelect: 'none', 
+                  zIndex: 2 
+                }}>
                   or click to browse local files
                 </Box>
               )}
@@ -325,8 +331,16 @@ const UploadTrack = () => {
                     '&::after': { right: '6px' }
                   }}
                 >
-                  <Box sx={{ color: '#0044cc', fontSize: '10px', fontWeight: 900, letterSpacing: '1px', textShadow: '0 1px 2px rgba(255,255,255,0.6)', userSelect: 'none', background: 'rgba(255,255,255,0.7)', padding: '2px 8px', borderRadius: '6px' }}>
-                    15s READY
+                  <Box sx={s.readyBadgeStyles}>
+                    15s
+                    <Box 
+                      component="span" 
+                      sx={{ 
+                        display: 'block'
+                      }}
+                    >
+                      READY
+                    </Box>
                   </Box>
                 </Box>
               </Box>
@@ -338,18 +352,15 @@ const UploadTrack = () => {
           )}
         </Box>
 
-        <ActionButton
-          variant="workflow"
-          disabled={isUploading}
-          onClick={() => handleNavigation(startTime, showTrimmer ? startTime + 15 : audioDuration)}
-          sx={{
-            width: '50%',
-            padding: '22px',
-            fontSize: '20px',
-          }}
-        >
-          Next
-        </ActionButton>
+        <Box sx={s.actionContainerWrapperStyles}>
+          <ActionButton
+            variant="workflow"
+            disabled={isUploading}
+            onClick={() => handleNavigation(startTime, showTrimmer ? startTime + 15 : audioDuration)}
+          >
+            Next
+          </ActionButton>
+        </Box>
       </Box>
     </Box>
   );
