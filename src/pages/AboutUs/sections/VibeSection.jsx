@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box } from '@mui/system';
+import AudioWaveform from '../components/AudioWaveform/AudioWaveform';
 import * as s from './VibeSection.styles';
 
 const VibeSection = () => (
@@ -11,12 +12,8 @@ const VibeSection = () => (
     <Box sx={s.coreExplanationParagraphStyles}>
       Upload a brief snippet of your track. Our app analyzes frequencies, rhythms, and tempos to generate concept art and text titles that perfectly match the soul of your sound.
     </Box>
-    
-    <Box sx={s.placeholderCanvasBoxStyles}>
-      <Box sx={s.internalPlaceholderTextStyles}>
-        ─── ■ ■ ■ AUDIO WAVEFORM VISUALIZER PLACEHOLDER ■ ■ ■ ───
-      </Box>
-    </Box>
+
+    <AudioWaveform sx={{ marginTop: { xs: '12px', sm: '18px', md: '24px' } }} />
   </Box>
 );
 
