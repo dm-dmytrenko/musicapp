@@ -13,7 +13,8 @@ const StatusBar = () => {
     { label: 'ABOUT US', path: '/about' },
     { label: 'UPLOAD TRACK', path: '/upload' },
     { label: 'CHOOSE OPTIONS', path: '/selector' },
-    { label: 'DOWNLOAD', path: '/download' }
+    { label: 'DOWNLOAD', path: '/download' },
+    { label: 'CHANGE', path: '/change' }
   ];
 
   const currentStepIndex = steps.findIndex(step => step.path === currentPath);
