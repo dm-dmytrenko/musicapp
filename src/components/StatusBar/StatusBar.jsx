@@ -1,20 +1,23 @@
 import React, { useState } from 'react';
 import { Box } from '@mui/system';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher.jsx';
 import * as s from './StatusBar.styles';
 
 const StatusBar = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const currentPath = location.pathname;
   const [menuOpen, setMenuOpen] = useState(false);
 
   const steps = [
-    { label: 'ABOUT US', path: '/about' },
-    { label: 'UPLOAD TRACK', path: '/upload' },
-    { label: 'CHOOSE OPTIONS', path: '/selector' },
-    { label: 'DOWNLOAD', path: '/download' },
-    { label: 'CHANGE', path: '/change' }
+    { label: t('nav.about_us'), path: '/about' },
+    { label: t('nav.upload_track'), path: '/upload' },
+    { label: t('nav.choose_options'), path: '/selector' },
+    { label: t('nav.download'), path: '/download' },
+    { label: t('nav.change', 'CHANGE'), path: '/change' }
   ];
 
   const currentStepIndex = steps.findIndex(step => step.path === currentPath);
@@ -85,6 +88,8 @@ const StatusBar = () => {
           ))}
         </Box>
       </Box>
+
+      <LanguageSwitcher />
 
       <Box 
         onClick={() => setMenuOpen(!menuOpen)}

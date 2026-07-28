@@ -1,0 +1,14 @@
+{
+  "nav": {
+    "about_us": "À PROPOS",
+    "upload_track": "CHARGER PISTE",
+    "choose_options": "CHOISIR OPTIONS",
+    "download": "TÉLÉCHARGER"
+  },
+  "downloadPage": {
+    "album_name": "NOM DE L'ALBUM",
+    "genre": "GENRE",
+    "thanks_message": "Merci d'utiliser notre service. Si vous souhaitez modifier le résultat final, appuyez sur",
+    "change": "Modifier"
+  }
+}

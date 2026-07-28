@@ -1,0 +1,14 @@
+{
+  "nav": {
+    "about_us": "ABOUT US",
+    "upload_track": "UPLOAD TRACK",
+    "choose_options": "CHOOSE OPTIONS",
+    "download": "DOWNLOAD"
+  },
+  "downloadPage": {
+    "album_name": "ALBUM NAME",
+    "genre": "GENRE",
+    "thanks_message": "Thanks for using our service. If you want to change something in the final result, then press",
+    "change": "Change"
+  }
+}
