@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { alpha } from '@mui/material/styles';
 import ActionButton from '../../components/ActionButton/ActionButton';
+import { processImage } from '../../utils/imageProcessing';
 
 import { PICSUM_API, WORD_API} from '../../config/apiEndpoints';
 
@@ -51,7 +52,12 @@ const Download = () => {
 
   const handleDownload = (e) => {
     e.stopPropagation();
-    console.log("Downloading picture manually...");
+
+    const link = document.createElement("a");
+    link.href = imageUrl;
+    link.download = `${projectName || "album-cover"}.png`;
+
+    link.click();
   };
 
   useEffect(() => {
@@ -78,7 +84,8 @@ const Download = () => {
             setProjectName("sonic biscuit"); 
           }
 
-          setImageUrl(imageResponse.url);
+          const processedImage = await processImage(imageResponse.url);
+          setImageUrl(processedImage);
         } catch (error) {
           console.error("Error executing dynamic async data resolution:", error);
           setProjectName("velvet track");
