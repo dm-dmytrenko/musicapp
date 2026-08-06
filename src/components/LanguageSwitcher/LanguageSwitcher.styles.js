@@ -6,6 +6,7 @@ export const SwitcherContainer = styled(Box)(({ theme }) => ({
   alignItems: "center",
   gap: "4px",
   marginLeft: "auto",
+  marginRight: "8px",
   padding: "3px",
   borderRadius: "20px",
   backgroundColor: "rgba(255, 255, 255, 0.3)",
