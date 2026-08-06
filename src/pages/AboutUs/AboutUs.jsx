@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation, Trans } from 'react-i18next';
 
 import AboutUsSectionWrapper from './components/AboutUsSectionWrapper';
 import ActionButton from '../../components/ActionButton/ActionButton';
@@ -25,6 +26,7 @@ const ABOUT_US_SECTIONS = [
 
 const AboutUs = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <Box sx={s.masterScrollWrapperStyles}>
@@ -37,11 +39,13 @@ const AboutUs = () => {
       <AboutUsSectionWrapper>
         <Box sx={s.footerCtaStackStyles}>
           <Box component="h2" sx={s.footerCtaHeadlineStyles}>
-            Stop staring at the canvas.<br />Let your sound lead.
+            <Trans i18nKey="aboutUs.footer_headline">
+              Stop staring at the canvas.<br />Let your sound lead.
+            </Trans>
           </Box>
           <ActionButton
             onClick={() => navigate('/upload')}
-            caption="It is free. Forever."
+            caption={t('aboutUs.cta_caption')}
             sx={{
               fontSize: { xs: '16px', sm: '18px' },
               fontWeight: 800,
@@ -50,7 +54,7 @@ const AboutUs = () => {
               maxWidth: '360px'
             }}
           >
-            Try it Free
+            {t('aboutUs.cta_button')}
           </ActionButton>
         </Box>
       </AboutUsSectionWrapper>

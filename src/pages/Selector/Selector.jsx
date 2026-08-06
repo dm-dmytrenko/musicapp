@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { setOptions } from '../../store/optionsSlice';
 import OptionTile from '../../components/OptionTile/OptionTile.jsx';
 import ActionButton from '../../components/ActionButton/ActionButton';
@@ -11,6 +12,7 @@ const Selector = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const isButtonDisabled = selectedOptions.length === 0;
 
   const handleTileClick = (optionId) => {
@@ -35,24 +37,24 @@ const Selector = () => {
           <OptionTile 
             optionNum="Opt_1" 
             icon="✒️" 
-            labelLine1="CREATE" 
-            labelLine2="TRACK NAME" 
+            labelLine1={t('selector.opt1_line1')} 
+            labelLine2={t('selector.opt1_line2')} 
             isSelected={selectedOptions.includes("Opt_1")}
             onClick={() => handleTileClick("Opt_1")}
           />
           <OptionTile 
             optionNum="Opt_2" 
             icon="🎨" 
-            labelLine1="CREATE" 
-            labelLine2="ALBUM PICTURE" 
+            labelLine1={t('selector.opt2_line1')} 
+            labelLine2={t('selector.opt2_line2')} 
             isSelected={selectedOptions.includes("Opt_2")}
             onClick={() => handleTileClick("Opt_2")}
           />
           <OptionTile 
             optionNum="Opt_3" 
             icon="🎧" 
-            labelLine1="DEFINE" 
-            labelLine2="GENRE" 
+            labelLine1={t('selector.opt3_line1')} 
+            labelLine2={t('selector.opt3_line2')} 
             isSelected={selectedOptions.includes("Opt_3")}
             onClick={() => handleTileClick("Opt_3")}
           />
@@ -66,14 +68,14 @@ const Selector = () => {
             width: {
               xs: '35%',
               md: '100%',
-    },
+            },
             maxWidth: '500px',
             padding: '18px',
             fontSize: '18px',
             marginTop: '4vh',
           }}
         >
-          Generate
+          {t('selector.generate_button')}
         </ActionButton>
       </Box>
     </Box>

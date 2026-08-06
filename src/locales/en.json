@@ -3,12 +3,113 @@
     "about_us": "ABOUT US",
     "upload_track": "UPLOAD TRACK",
     "choose_options": "CHOOSE OPTIONS",
-    "download": "DOWNLOAD"
+    "download": "DOWNLOAD",
+    "change": "CHANGE"
   },
-  "downloadPage": {
-    "album_name": "ALBUM NAME",
-    "genre": "GENRE",
+  "hero": {
+    "badge": "INTRODUCING TroisD",
+    "headline": "Give your music to the world.<br />Without the overhead.",
+    "subtext": "We are an independent team building straightforward, automated release tools for bedroom producers and indie artists.",
+    "cta_button": "Try it Free",
+    "cta_caption": "It is free. Forever."
+  },
+  "struggle": {
+    "badge": "THE 24-HOUR STRUGGLE",
+    "heading": "Staring at a blank screen kills your momentum.",
+    "bullet1_bold": "Finishing a track feels amazing.",
+    "bullet1_text": "But spending the next day stressing over album names and formatting artwork kills your creative high.",
+    "bullet2_bold": "It drains your energy",
+    "bullet2_text": "right when you should be celebrating your music.",
+    "highlight_heading": "From 24 Hours to 5 Minutes",
+    "highlight_text": "We instantly compress your entire post-production checklist into a distribution-ready asset package."
+  },
+  "vibe": {
+    "badge": "HOW IT WORKS",
+    "heading": "Give us 15 seconds. We map the vibe.",
+    "description": "Upload a brief snippet of your track. Our app analyzes frequencies, rhythms, and tempos to generate concept art and text titles that perfectly match the soul of your sound."
+  },
+  "manifesto": {
+    "badge": "OUR NO-SCAM POLICY",
+    "heading": "No accounts. No forcing. Just focus on the music.",
+    "row1_bold": "We hate subscription traps",
+    "row1_text": "and data-harvesting setups just as much as you do.",
+    "row2_bold": "Zero mandatory registrations.",
+    "row2_text": "You don't need a profile, password, or credit card to fully process your music layout results here.",
+    "row3_bold": "100% Free Baseline Tools.",
+    "row3_text": "Everything we have right now—and our core asset pipelines down the line—will remain free forever. Everything is optimized for the community."
+  },
+  "features": {
+    "card1": {
+      "title": "The Genreless Problem",
+      "bullet1_bold": "Distributors demand strict categories",
+      "bullet1_text": ", but experimental music often defies classification.",
+      "bullet2_bold": "Our solution:",
+      "bullet2_text": " We scan your frequency weights to find official commercial tags that slide past distributor review blocks safely."
+    },
+    "card2": {
+      "title": "Anti-AI Workarounds",
+      "bullet1_bold": "Streaming stores are cracking down",
+      "bullet1_text": " on raw, unedited AI art and metadata formats.",
+      "bullet2_bold": "Our solution:",
+      "bullet2_text": " We pass all graphics through a multi-layer styling system so your final assets look clean and fully compliant."
+    }
+  },
+  "futurePlans": {
+    "badge": "ROADMAP",
+    "heading": "What we are building next",
+    "title": "Vibe-Driven Smart Promotion Engine",
+    "description": "We are developing a tool to automatically scan your track's specific sound waves and match it to curated music niches, custom target playlists, and aesthetic visual content styles to make promotion easier."
+  },
+  "email": {
+    "heading": "Don't miss an opportunity.",
+    "subcaption": "Follow our email list only if you want to be the first to know when new modules and tools drop. No spam, no marketing trash. Completely optional.",
+    "placeholder": "Enter your email address",
+    "button": "Follow"
+  },
+  "aboutUs": {
+    "footer_headline": "Stop staring at the canvas.<br />Let your sound lead.",
+    "cta_button": "Try it Free",
+    "cta_caption": "It is free. Forever."
+  },
+  "uploadTrack": {
+    "heading_upload": "Upload the track",
+    "heading_analyzing": "Analyzing frequencies...",
+    "heading_trimmer": "Select 15s Snippet",
+    "dropzone_uploading": "Uploading...",
+    "dropzone_drag": "Drag & drop",
+    "dropzone_browse": "or click to browse local files",
+    "trimmer_ready": "READY",
+    "trimmer_footer": "Drag preview glass block to change section • Total Track: {{duration}}",
+    "button_next": "Next",
+    "alert_invalid_format": "Invalid file format. Please upload an audio track.",
+    "alert_read_error": "Error reading audio data.",
+    "alert_file_too_large": "File is too large! Please upload an audio file under 50MB."
+  },
+  "selector": {
+    "opt1_line1": "CREATE",
+    "opt1_line2": "TRACK NAME",
+    "opt2_line1": "CREATE",
+    "opt2_line2": "TRACK PICTURE",
+    "opt3_line1": "DEFINE",
+    "opt3_line2": "GENRE",
+    "generate_button": "Generate"
+  },
+  "download": {
+    "loading_art": "Loading Art...",
+    "download_button": "Download",
+    "album_name_label": "TRACK NAME",
+    "genre_label": "GENRE",
     "thanks_message": "Thanks for using our service. If you want to change something in the final result, then press",
-    "change": "Change"
+    "change_button": "Change"
+  },
+  "change": {
+    "options": {
+      "Opt_1": "Change name",
+      "Opt_2": "Change song cover",
+      "trackPart": "Use other part of the track",
+      "comment": "Add comment to improve results"
+    },
+    "comment_placeholder": "Describe adjustments here (e.g. make the titles darker, choose futuristic visuals)...",
+    "generate_button": "Generate"
   }
 }

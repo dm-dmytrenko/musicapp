@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Box } from '@mui/system';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import ActionButton from '../../components/ActionButton/ActionButton';
 import * as s from './Change.styles';
 
@@ -45,13 +46,14 @@ const ConfigToggleRow = ({ label, checked, onToggle }) => (
 );
 
 const TOGGLE_OPTIONS = [
-  { key: 'Opt_1', label: 'Change name' },
-  { key: 'Opt_2', label: 'Change song cover' },
-  { key: 'trackPart', label: 'Use other part of the track' },
-  { key: 'comment', label: 'Add comment to improve results' },
+  { key: 'Opt_1', labelKey: 'change.options.Opt_1' },
+  { key: 'Opt_2', labelKey: 'change.options.Opt_2' },
+  { key: 'trackPart', labelKey: 'change.options.trackPart' },
+  { key: 'comment', labelKey: 'change.options.comment' },
 ];
 
 const Change = () => {
+  const { t } = useTranslation();
   const [switches, setSwitches] = useState({
     Opt_1: false,
     Opt_2: false,
@@ -93,10 +95,10 @@ const Change = () => {
           alignItems: 'stretch'
         }}
       >
-        {visibleOptions.map(({ key, label }) => (
+        {visibleOptions.map(({ key, labelKey }) => (
           <ConfigToggleRow 
             key={key}
-            label={label}
+            label={t(labelKey)}
             checked={switches[key]}
             onToggle={() => toggleSwitch(key)}
           />
@@ -119,7 +121,7 @@ const Change = () => {
           >
             <Box 
               component="textarea" 
-              placeholder="Describe adjustments here (e.g. make the titles darker, choose futuristic visuals)..."
+              placeholder={t('change.comment_placeholder')}
               sx={s.commentTextAreaStyles}
             />
           </MotionBox>
@@ -128,7 +130,7 @@ const Change = () => {
 
       <Box sx={s.actionContainerWrapperStyles}>
         <ActionButton onClick={() => navigate('/download')}>
-          Generate
+          {t('change.generate_button')}
         </ActionButton>
       </Box>
     </Box>

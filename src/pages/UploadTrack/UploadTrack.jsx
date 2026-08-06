@@ -1,12 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAudioFile } from '../../context/AudioContext';
 import ActionButton from '../../components/ActionButton/ActionButton';
 import * as s from './UploadTrack.styles';
 import { formatTime, generateMockWaveformHeights } from './UploadTrack.utils';
 
 const UploadTrack = () => {
+  const { t } = useTranslation();
   const [isDraggingFile, setIsDraggingFile] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [showTrimmer, setShowTrimmer] = useState(false);
@@ -48,7 +50,7 @@ const UploadTrack = () => {
   const processFile = (file) => {
     if (!file) return;
     if (!file.type.startsWith('audio/')) {
-      alert("Invalid file format. Please upload an audio track.");
+      alert(t('uploadTrack.alert_invalid_format'));
       return;
     }
 
@@ -76,7 +78,7 @@ const UploadTrack = () => {
         })
         .catch(() => {
           setIsUploading(false);
-          alert("Error reading audio data.");
+          alert(t('uploadTrack.alert_read_error'));
         });
     };
     reader.readAsArrayBuffer(file);
@@ -104,7 +106,7 @@ const UploadTrack = () => {
       const file = files[0];
 
       if (file.size > 50 * 1024 * 1024) {
-        alert("File is too large! Please upload an audio file under 50MB.");
+        alert(t('uploadTrack.alert_file_too_large'));
         return; 
       }
       setRawTrackFile(file);
@@ -207,7 +209,7 @@ const UploadTrack = () => {
 
       <Box sx={s.mainStackContainerStyles}>
         <Box component="h1" sx={s.masterHeadingStyles}>
-          {isUploading ? "Analyzing frequencies..." : showTrimmer ? "Select 15s Snippet" : "Upload the track"}
+          {isUploading ? t('uploadTrack.heading_analyzing') : showTrimmer ? t('uploadTrack.heading_trimmer') : t('uploadTrack.heading_upload')}
         </Box>
 
         <Box
@@ -250,7 +252,7 @@ const UploadTrack = () => {
                 transition: 'color 0.15s',
                 textShadow: isUploading ? '0 2px 12px rgba(0,34,136,0.6)' : 'none'
               }}>
-                {isUploading ? "Uploading..." : "Drag & drop"}
+                {isUploading ? t('uploadTrack.dropzone_uploading') : t('uploadTrack.dropzone_drag')}
               </Box>
               
               {!isUploading && (
@@ -261,7 +263,7 @@ const UploadTrack = () => {
                   userSelect: 'none', 
                   zIndex: 2 
                 }}>
-                  or click to browse local files
+                  {t('uploadTrack.dropzone_browse')}
                 </Box>
               )}
             </>
@@ -339,14 +341,14 @@ const UploadTrack = () => {
                         display: 'block'
                       }}
                     >
-                      READY
+                      {t('uploadTrack.trimmer_ready')}
                     </Box>
                   </Box>
                 </Box>
               </Box>
               
               <Box sx={s.genericFooterCaptionTextStyles}>
-                Drag preview glass block to change section • Total Track: {formatTime(audioDuration)}
+                {t('uploadTrack.trimmer_footer', { duration: formatTime(audioDuration) })}
               </Box>
             </Box>
           )}
@@ -358,7 +360,7 @@ const UploadTrack = () => {
             disabled={isUploading}
             onClick={() => handleNavigation(startTime, showTrimmer ? startTime + 15 : audioDuration)}
           >
-            Next
+            {t('uploadTrack.button_next')}
           </ActionButton>
         </Box>
       </Box>

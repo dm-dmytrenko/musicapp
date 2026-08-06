@@ -3,10 +3,11 @@ import { Box } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { alpha } from '@mui/material/styles';
+import { useTranslation } from 'react-i18next';
 import ActionButton from '../../components/ActionButton/ActionButton';
 import { processImage } from '../../utils/imageProcessing';
 
-import { PICSUM_API, WORD_API} from '../../config/apiEndpoints';
+import { PICSUM_API, WORD_API } from '../../config/apiEndpoints';
 
 import * as s from './Download.styles';
 
@@ -33,6 +34,7 @@ const InfoDisplayRow = ({ label, value, onClick }) => (
 
 const Download = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [isHovered, setIsHovered] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
   const [projectName, setProjectName] = useState('');
@@ -61,42 +63,42 @@ const Download = () => {
   };
 
   useEffect(() => {
-      const fetchAllProjectData = async () => {
-        try {
-          setIsLoading(true);
+    const fetchAllProjectData = async () => {
+      try {
+        setIsLoading(true);
 
-          const randomGenre = MUSIC_GENRES[Math.floor(Math.random() * MUSIC_GENRES.length)];
-          setMusicGenre(randomGenre);
+        const randomGenre = MUSIC_GENRES[Math.floor(Math.random() * MUSIC_GENRES.length)];
+        setMusicGenre(randomGenre);
 
-          const [wordResponse, imageResponse] = await Promise.all([
-            fetch(WORD_API.GET_WORDS(2)),
-            fetch(PICSUM_API.getRandomSquareEndpoint(500))
-          ]);
+        const [wordResponse, imageResponse] = await Promise.all([
+          fetch(WORD_API.GET_WORDS(2)),
+          fetch(PICSUM_API.getRandomSquareEndpoint(500))
+        ]);
 
-          if (!wordResponse.ok || !imageResponse.ok) {
-            throw new Error('API pipeline error occurred.');
-          }
-          const wordsArray = await wordResponse.json(); 
-          
-          if (wordsArray && wordsArray.length >= 2) {
-            setProjectName(`${wordsArray[0]} ${wordsArray[1]}`);
-          } else {
-            setProjectName("sonic biscuit"); 
-          }
-
-          const processedImage = await processImage(imageResponse.url);
-          setImageUrl(processedImage);
-        } catch (error) {
-          console.error("Error executing dynamic async data resolution:", error);
-          setProjectName("velvet track");
-          setImageUrl(`https://picsum.photos/500?random=${Math.random()}`);
-        } finally {
-          setIsLoading(false);
+        if (!wordResponse.ok || !imageResponse.ok) {
+          throw new Error('API pipeline error occurred.');
         }
-      };
+        const wordsArray = await wordResponse.json(); 
+        
+        if (wordsArray && wordsArray.length >= 2) {
+          setProjectName(`${wordsArray[0]} ${wordsArray[1]}`);
+        } else {
+          setProjectName("sonic biscuit"); 
+        }
 
-      fetchAllProjectData();
-    }, []);
+        const processedImage = await processImage(imageResponse.url);
+        setImageUrl(processedImage);
+      } catch (error) {
+        console.error("Error executing dynamic async data resolution:", error);
+        setProjectName("velvet track");
+        setImageUrl(`https://picsum.photos/500?random=${Math.random()}`);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchAllProjectData();
+  }, []);
 
   return (
     <Box sx={s.pageWrapperStyles}>
@@ -108,17 +110,17 @@ const Download = () => {
             sx={s.previewFrameCardStyles}
           >
             {isLoading ? (
-                <Box sx={{ color: 'primary.main', fontSize: '18px', fontWeight: 700 }}>
-                  Loading Art...
-                </Box>
-              ) : (
-                <Box 
-                  component="img"
-                  src={imageUrl || null}
-                  alt="Generated Dynamic Artwork"
-                  sx={s.pixelArtImageElementStyles}
-                />
-              )}
+              <Box sx={{ color: 'primary.main', fontSize: '18px', fontWeight: 700 }}>
+                {t('download.loading_art')}
+              </Box>
+            ) : (
+              <Box 
+                component="img"
+                src={imageUrl || null}
+                alt="Generated Dynamic Artwork"
+                sx={s.pixelArtImageElementStyles}
+              />
+            )}
 
             <Box sx={{
               position: 'absolute',
@@ -149,7 +151,7 @@ const Download = () => {
                   }
                 }}
               >
-                Download
+                {t('download.download_button')}
               </ActionButton>
             </Box>
           </Box>
@@ -158,7 +160,7 @@ const Download = () => {
         <Box sx={s.interactivePanelStackStyles}>
           {!isLoading && projectName && chosenOptions.includes("Opt_1") && (
             <InfoDisplayRow 
-              label="ALBUM NAME"
+              label={t('download.album_name_label')}
               value={projectName}
               onClick={() => handleCopyToClipboard(projectName, "Album name")}
             />
@@ -166,14 +168,14 @@ const Download = () => {
 
           {!isLoading && musicGenre && chosenOptions.includes("Opt_3") && (
             <InfoDisplayRow 
-              label="GENRE"
+              label={t('download.genre_label')}
               value={musicGenre}
               onClick={() => handleCopyToClipboard(musicGenre, "Genre option")}
             />
           )}
 
           <Box sx={s.thankYouMessageTextStyles}>
-            Thanks for using our service. If you want to change something in the final result, then press
+            {t('download.thanks_message')}
           </Box>
 
           <ActionButton
@@ -190,7 +192,7 @@ const Download = () => {
               }
             }}
           >
-            Change
+            {t('download.change_button')}
           </ActionButton>
         </Box>
 
