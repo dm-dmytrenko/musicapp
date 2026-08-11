@@ -3,7 +3,7 @@
 # TroisD
 
 **Release automation and asset optimization for artists who don't fit the mold.**
-
+> 🔗 [artisthelper.vercel.app](https://artisthelper.vercel.app)
 *Built for bedroom producers, indie artists, and experimental musicians — not algorithms.*
 
 [![Status](https://img.shields.io/badge/status-in%20development-red?style=flat-square)](https://github.com/your-username/troisd)
