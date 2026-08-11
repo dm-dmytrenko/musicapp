@@ -1,0 +1,115 @@
+{
+  "nav": {
+    "about_us": "À PROPOS",
+    "upload_track": "CHARGER PISTE",
+    "choose_options": "CHOISIR OPTIONS",
+    "download": "TÉLÉCHARGER",
+    "change": "MODIFIER"
+  },
+  "hero": {
+    "badge": "PRÉSENTATION DE TroisD",
+    "headline": "Offrez votre musique au monde.<br />Sans les frais généraux.",
+    "subtext": "Nous sommes une équipe indépendante qui crée des outils de sortie simples et automatisés pour les producteurs indépendants et les artistes émergents.",
+    "cta_button": "Essayer gratuitement",
+    "cta_caption": "C'est gratuit. Pour toujours."
+  },
+  "struggle": {
+    "badge": "LE COMBAT DE 24 HEURES",
+    "heading": "Fixer un écran vide tue votre élan créatif.",
+    "bullet1_bold": "Terminer un morceau est fantastique.",
+    "bullet1_text": "Mais passer la journée suivante à stresser sur les noms d'albums et la mise en page gâche votre enthousiasme.",
+    "bullet2_bold": "Cela épuise votre énergie",
+    "bullet2_text": "juste au moment où vous devriez célébrer votre musique.",
+    "highlight_heading": "De 24 Heures à 5 Minutes",
+    "highlight_text": "Nous condensons immédiatement toute votre liste de contrôle de post-production en un pack prêt à la distribution."
+  },
+  "vibe": {
+    "badge": "COMMENT ÇA MARCHE",
+    "heading": "Donnez-nous 15 secondes. Nous capturons l'ambiance.",
+    "description": "Téléchargez un court extrait de votre morceau. Notre application analyse les fréquences, les rythmes et le tempo pour générer des pochettes et des titres en parfaite harmonie avec l'âme de votre musique."
+  },
+  "manifesto": {
+    "badge": "NOTRE POLITIQUE SANS PIÈGE",
+    "heading": "Pas de compte. Pas de contrainte.<br />Rien que la musique.",
+    "row1_bold": "Nous détestons les pièges d'abonnement",
+    "row1_text": "et la collecte de données autant que vous.",
+    "row2_bold": "Zéro inscription obligatoire.",
+    "row2_text": "Vous n'avez pas besoin de profil, de mot de passe ou de carte bancaire pour traiter vos visuels ici.",
+    "row3_bold": "Outils de base 100% Gratuits.",
+    "row3_text": "Tout ce que nous proposons aujourd'hui—et nos futurs outils—restera gratuit pour toujours. Tout est optimisé pour la communauté."
+  },
+  "features": {
+    "card1": {
+      "title": "Le Problème du Hors-Genre",
+      "bullet1_bold": "Les distributeurs exigent des catégories strictes",
+      "bullet1_text": ", mais la musique expérimentale échappe souvent aux classifications.",
+      "bullet2_bold": "Notre solution :",
+      "bullet2_text": " Nous analysons vos fréquences pour trouver des tags commerciaux officiels qui passent les validations sans encombre."
+    },
+    "card2": {
+      "title": "Contournement Anti-IA",
+      "bullet1_bold": "Les plateformes de streaming renforcent leurs contrôles",
+      "bullet1_text": " sur les visuels IA bruts et les métadonnées non éditées.",
+      "bullet2_bold": "Notre solution :",
+      "bullet2_text": " Nous appliquons un système de style multicouche à tous les visuels pour garantir un rendu propre et conforme."
+    }
+  },
+  "futurePlans": {
+    "badge": "FEUILLE DE ROADMAP",
+    "heading": "Ce que nous développons ensuite",
+    "title": "Moteur de Promotion Intelligente par Ambiance",
+    "description": "Nous développons un outil capable de scanner les ondes sonores de votre morceau et de le faire correspondre à des niches musicales ciblées, des playlists personnalisées et des styles visuels adaptés pour faciliter votre promotion."
+  },
+  "email": {
+    "heading": "Ne manquez aucune opportunité.",
+    "subcaption": "Inscrivez-vous à notre liste e-mail uniquement si vous souhaitez être informé en premier de la sortie de nouveaux modules. Pas de spam, pas de pub. Totalement optionnel.",
+    "placeholder": "Entrez votre adresse e-mail",
+    "button": "S'abonner"
+  },
+  "aboutUs": {
+    "footer_headline": "Arrêtez de fixer la toile vierge.<br />Laissez votre son vous guider.",
+    "cta_button": "Essayer gratuitement",
+    "cta_caption": "C'est gratuit. Pour toujours."
+  },
+  "uploadTrack": {
+    "heading_upload": "Chargez votre piste",
+    "heading_analyzing": "Analyse des fréquences...",
+    "heading_trimmer": "Sélectionnez un extrait de 15s",
+    "dropzone_uploading": "Chargement...",
+    "dropzone_drag": "Glissez & déposez",
+    "dropzone_browse": "ou cliquez pour parcourir vos fichiers",
+    "trimmer_ready": "PRÊT",
+    "trimmer_footer": "Faites glisser le bloc de prévisualisation pour changer de section • Durée totale : {{duration}}",
+    "button_next": "Suivant",
+    "alert_invalid_format": "Format de fichier non valide. Veuillez charger une piste audio.",
+    "alert_read_error": "Erreur lors de la lecture des données audio.",
+    "alert_file_too_large": "Le fichier est trop volumineux ! Veuillez charger un fichier audio de moins de 50 Mo."
+  },
+  "selector": {
+    "opt1_line1": "CRÉER",
+    "opt1_line2": "NOM DE PISTE",
+    "opt2_line1": "CRÉER",
+    "opt2_line2": "LA POCHETTE",
+    "opt3_line1": "DÉFINIR",
+    "opt3_line2": "LE GENRE",
+    "generate_button": "Générer"
+  },
+  "download": {
+    "loading_art": "Chargement de l'image...",
+    "download_button": "Télécharger",
+    "album_name_label": "NOM DE PISTE",
+    "genre_label": "GENRE",
+    "thanks_message": "Merci d'utiliser notre service. Si vous souhaitez modifier le résultat final, appuyez sur",
+    "change_button": "Modifier"
+  },
+  "change": {
+    "options": {
+      "Opt_1": "Modifier le nom",
+      "Opt_2": "Modifier la pochette",
+      "trackPart": "Utiliser une autre partie du morceau",
+      "comment": "Ajouter un commentaire pour améliorer"
+    },
+    "comment_placeholder": "Décrivez les ajustements ici (ex. assombrir les titres, choisir des visuels futuristes)...",
+    "generate_button": "Générer"
+  }
+}
