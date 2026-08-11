@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/system';
 import { useTranslation, Trans } from 'react-i18next';
-import ManifestoAlertRow from '../components/ManifestoAlertRow';
+import ManifestoAlertRow from '../components/ManifestoAlertRow/ManifestoAlertRow';
 import * as s from './ManifestoSection.styles';
 
 const ManifestoSection = () => {
