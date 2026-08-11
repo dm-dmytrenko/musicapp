@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Box } from '@mui/system';
 import StatusBar from './components/StatusBar/StatusBar.jsx';
 import UploadTrack from './pages/UploadTrack/UploadTrack.jsx';
@@ -36,6 +36,7 @@ const App = () => {
           overflow: 'hidden'
         }}>
           <Routes>
+            <Route path="/" element={<Navigate to="/about" replace />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/upload" element={<UploadTrack />} />
             <Route path="/selector" element={<Selector />} />
