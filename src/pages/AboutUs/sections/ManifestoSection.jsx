@@ -14,7 +14,7 @@ const ManifestoSection = () => {
           {t('manifesto.badge')}
         </Box>
         <Box component="h2" sx={s.highImpactHeadlineStyles}>
-          {t('manifesto.heading')}
+          <Trans i18nKey="manifesto.heading" components={{ br: <br /> }} />
         </Box>
       </Box>
 
