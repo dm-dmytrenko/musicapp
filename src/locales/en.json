@@ -95,6 +95,8 @@
     "dropzone_browse": "or click to browse local files",
     "trimmer_ready": "READY",
     "trimmer_footer": "Drag preview glass block to change section • Total Track: {{duration}}",
+    "trimmer_from": "From {{time}}",
+    "trimmer_to": "To {{time}}",
     "button_next": "Next",
     "alert_invalid_format": "Invalid file format. Please upload an audio track.",
     "alert_read_error": "Error reading audio data.",

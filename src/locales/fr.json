@@ -95,6 +95,8 @@
     "dropzone_browse": "ou cliquez pour parcourir vos fichiers",
     "trimmer_ready": "PRÊT",
     "trimmer_footer": "Faites glisser le bloc de prévisualisation pour changer de section • Durée totale : {{duration}}",
+    "trimmer_from": "De {{time}}",
+    "trimmer_to": "À {{time}}",
     "button_next": "Suivant",
     "alert_invalid_format": "Format de fichier non valide. Veuillez charger une piste audio.",
     "alert_read_error": "Erreur lors de la lecture des données audio.",

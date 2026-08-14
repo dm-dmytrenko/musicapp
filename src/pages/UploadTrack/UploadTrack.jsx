@@ -272,7 +272,9 @@ const UploadTrack = () => {
           {showTrimmer && (
             <Box onClick={(e) => e.stopPropagation()} sx={s.trimmerCentralGridStyles}>
               <Box sx={s.trimmerLayoutHeaderRowStyles}>
-                <Box sx={s.trimmerBadgeTextStyles}>{formatTime(startTime)}</Box>
+                <Box sx={s.trimmerBadgeTextStyles}>
+                  {t('uploadTrack.trimmer_from', { time: formatTime(startTime + 15) })}
+                </Box>
 
                 <Box onClick={togglePlayback} sx={s.audioPlaybackActionButtonStyles}>
                   {isPlaying ? (
@@ -285,7 +287,9 @@ const UploadTrack = () => {
                   )}
                 </Box>
 
-                <Box sx={s.trimmerBadgeTextStyles}>{formatTime(startTime + 15)}</Box>
+                <Box sx={s.trimmerBadgeTextStyles}>
+                  {t('uploadTrack.trimmer_to', { time: formatTime(startTime + 15) })}
+                </Box>
               </Box>
 
               <Box ref={timelineRef} onMouseDown={handleTimelineMouseDown} sx={s.interactiveTimelineTrackStyles}>
