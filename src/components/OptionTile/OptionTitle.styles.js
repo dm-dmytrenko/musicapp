@@ -17,6 +17,17 @@ export const tileCardRootStyles = (isSelected) => ({
   display: 'flex',
   flexDirection: 'column',
   position: 'relative',
+  
+  // FIX 1: Explicitly elevate selected card above unselected neighboring cards
+  zIndex: isSelected ? 5 : 1, 
+
+  // FIX 2: Suppress focus rings sticking after click
+  outline: 'none',
+  WebkitTapHighlightColor: 'transparent',
+  '&:focus': {
+    outline: 'none',
+  },
+
   cursor: 'pointer',
   transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
   boxSizing: 'border-box',
@@ -32,7 +43,11 @@ export const tileCardRootStyles = (isSelected) => ({
     width: '100%',
     height: '160px',
     borderRadius: '24px',
-    transform: isSelected ? 'scale(1.02)' : 'none',
+    transform: isSelected ? 'translateY(-4px)' : 'translateY(0)',
+    '&:hover': {
+      transform: isSelected ? 'translateY(-5px)' : 'translateY(-2px)',
+      background: isSelected ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.6)',
+    }
   }
 });
 

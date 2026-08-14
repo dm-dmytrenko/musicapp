@@ -26,7 +26,7 @@ export const mainContentContainerStyles = {
 export const optionsRowGridStyles = {
   display: 'grid', 
   gridTemplateColumns: 'repeat(3, 1fr)',
-  gap: '3.5%',
+  gap: '2%',
   justifyContent: 'center',
   alignItems: 'center',
   width: '100%',
@@ -38,7 +38,7 @@ export const optionsRowGridStyles = {
     gridTemplateColumns: 'minmax(0, 400px)',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: '16px',
+    gap: '15px',
     maxWidth: '500px',
     transform: 'translateY(0)',
   }
