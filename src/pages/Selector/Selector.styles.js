@@ -34,12 +34,12 @@ export const optionsRowGridStyles = {
   margin: '0 auto',
   transform: 'translateY(-2vh)',
 
-  '@media (max-width: 900px)': {
+  '@media (max-width: 899px)': {
     gridTemplateColumns: 'minmax(0, 400px)',
     justifyContent: 'center',
     alignItems: 'center',
     gap: '15px',
-    maxWidth: '500px',
+    maxWidth: '400px',
     transform: 'translateY(0)',
   }
 };

@@ -17,11 +17,7 @@ export const tileCardRootStyles = (isSelected) => ({
   display: 'flex',
   flexDirection: 'column',
   position: 'relative',
-  
-  // FIX 1: Explicitly elevate selected card above unselected neighboring cards
-  zIndex: isSelected ? 5 : 1, 
-
-  // FIX 2: Suppress focus rings sticking after click
+  zIndex: isSelected ? 5 : 1,
   outline: 'none',
   WebkitTapHighlightColor: 'transparent',
   '&:focus': {
@@ -38,7 +34,7 @@ export const tileCardRootStyles = (isSelected) => ({
     background: isSelected ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.6)',
     boxShadow: isSelected ? '0 60px 100px rgba(0, 119, 255, 0.35)' : '0 50px 90px rgba(0, 70, 120, 0.2)'
   },
-  '@media (max-width: 900px)': {
+  '@media (max-width: 899px)': {
     aspectRatio: 'unset',      
     width: '100%',
     height: '160px',
@@ -65,7 +61,7 @@ export const ribbonHeaderStyles = {
   boxShadow: 'inset 0 2px 2px rgba(255, 255, 255, 0.5)',
   textShadow: '0 2px 4px rgba(0, 0, 0, 0.35)',
   flexShrink: 0,
-  '@media (max-width: 900px)': {
+  '@media (max-width: 899px)': {
     height: '32px',
     fontSize: '12px'
   }
@@ -80,7 +76,7 @@ export const centerContentBodyStyles = {
   padding: '28px', 
   textAlign: 'center', 
   gap: '8%',
-  '@media (max-width: 900px)': {
+  '@media (max-width: 899px)': {
     flexDirection: 'row',       
     justifyContent: 'flex-start', 
     alignItems: 'center',         
@@ -97,7 +93,7 @@ export const oversizedIconTextStyles = {
     lg: '5rem',
   },
   filter: 'drop-shadow(0 16px 28px rgba(0, 40, 100, 0.25))',
-  '@media (max-width: 900px)': {
+  '@media (max-width: 899px)': {
     fontSize: '40px',
     marginBottom: 0,
     paddingLeft: '25px',
@@ -121,7 +117,7 @@ export const labelTypographyInlineStyles = {
   textAlign: 'center',
   width: '100%',
   display: 'block',
-  '@media (max-width: 900px)': {
+  '@media (max-width: 899px)': {
     fontSize: '15px',
     textAlign: 'center',   
     lineHeight: '1.2',
