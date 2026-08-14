@@ -31,7 +31,7 @@ export const desktopStepProgressStackStyles = {
   display: 'flex', 
   alignItems: 'center', 
   gap: 'clamp(4px, 1.2vw, 16px)',
-  '@media (max-width: 650px)': {
+  '@media (max-width: 805px)': {
     display: 'none'
   }
 };
