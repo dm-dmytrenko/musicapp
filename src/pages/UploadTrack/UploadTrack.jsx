@@ -243,7 +243,7 @@ const UploadTrack = () => {
           {!showTrimmer && (
             <>
               <Box sx={{ 
-                fontSize: { xs: '20px', sm: '26px', md: '32px' },
+                fontSize: { xs: '28px', sm: '37px', md: '43px' },
                 fontWeight: 700, 
                 color: isUploading ? '#fff' : '#0055dd',
                 userSelect: 'none',
