@@ -3,13 +3,15 @@ import { gradients, sharedStyles } from '../../theme';
 export const pageWrapperStyles = {
   width: '100%',
   minWidth: '350px',
-  height: '100vh',
+  minHeight: '100vh',
+  height: '100%',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
   padding: '10px 5%',
   overflow: 'hidden',
+  overflowY: 'auto',
   boxSizing: 'border-box',
   fontFamily: 'typography.fontFamily'
 };
@@ -22,6 +24,7 @@ export const contentLayoutGridStyles = {
   gap: '7vw',
   justifyContent: 'center',
   alignItems: 'center',
+  margin: 'auto 0',
   '@media (max-width: 950px)': {
     flexDirection: 'column',
     gap: '12px'
@@ -47,7 +50,7 @@ export const previewFrameCardStyles = {
   overflow: 'hidden',
   gap: '15px',
   '@media (max-width: 950px)': {
-    maxWidth: '400px',
+    maxWidth: '280px',
     borderRadius: '28px',
   },
   '@media (max-width: 500px)': {
