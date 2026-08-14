@@ -184,8 +184,9 @@ const Download = () => {
             sx={{
               width: '100%',
               maxWidth: '100%',
-              padding: '18px',
-              fontSize: '2vw',
+              padding: '16px',
+              fontSize: '18px',
+              boxSizing: 'border-box',
               '&:hover': {
                 transform: 'translateY(-3px)',
                 boxShadow: '0 25px 50px rgba(0,85,221,0.35)'

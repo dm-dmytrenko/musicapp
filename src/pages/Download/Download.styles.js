@@ -29,7 +29,8 @@ export const contentLayoutGridStyles = {
 };
 
 export const previewFrameCardStyles = {
-  flex: 1,
+  flex: '1 1 auto',
+  width: '100%',
   maxWidth: '520px',
   aspectRatio: '1 / 1',
   background: gradients.previewFrame,
@@ -46,27 +47,18 @@ export const previewFrameCardStyles = {
   overflow: 'hidden',
   gap: '15px',
   '@media (max-width: 950px)': {
-    maxWidth: '39%',
-    borderRadius: '24px',
-    aspectRatio: '1 / 1',
-  },
-  '@media (max-width: 850px)': {
-    maxWidth: '45%',
-  },
-  '@media (max-width: 800px)': {
-    maxWidth: '50%',
+    maxWidth: '400px',
+    borderRadius: '28px',
   },
   '@media (max-width: 500px)': {
-    width: '100%',
-    maxWidth: '320px',
-    aspectRatio: '1 / 1',
+    maxWidth: '280px',
+    borderRadius: '24px',
   }
 };
 
 export const pixelArtImageElementStyles = {
   width: '100%',
-  height: 'auto',
-  aspectRatio: '1 / 1',
+  height: '100%',
   objectFit: 'cover',
   borderRadius: '20px',
   display: 'block'
@@ -74,17 +66,16 @@ export const pixelArtImageElementStyles = {
 
 export const interactivePanelStackStyles = {
   flex: 1,
-  maxWidth: '560px',
+  maxWidth: '520px',
   display: 'flex',
   flexDirection: 'column',
   gap: '3.5vh',
   '@media (max-width: 950px)': {
-    gap: '2.5vh',
+    maxWidth: '400px',
+    gap: '2vh',
   },
   '@media (max-width: 500px)': {
-    width: '100%',
-    maxWidth: '320px',
-    gap: '6px',
+    maxWidth: '280px',
   }
 };
 
@@ -121,7 +112,7 @@ export const infoRowValueStyles = {
 };
 
 export const thankYouMessageTextStyles = {
-  fontSize: '1.4vw',
+  fontSize: '15px',
   minFontSize: '15px',
   fontWeight: 600,
   color: 'primary.main',
