@@ -37,10 +37,11 @@ export const timelineCardContainerStyles = {
   padding: { xs: '20px 16px', sm: '32px', md: '40px' },
   display: 'flex',
   alignItems: 'center',
-  gap: { xs: '16px', sm: '24px', md: '32px' },
-  flexWrap: 'nowrap', // Prevents wrapping elements off-screen
+  gap: { xs: '12px', sm: '20px', md: '28px' },
+  flexWrap: 'nowrap',
   boxSizing: 'border-box',
   ...sharedStyles.glassCardMedium,
+  margin: { xs: '0px 0', sm: '-5px 0', md: '-5px 0' }
 };
 
 export const standaloneIconAvatarStyles = {

@@ -6,6 +6,8 @@ import * as s from './FuturePlansSection.styles';
 const FuturePlansSection = () => {
   const { t } = useTranslation();
 
+  const plans = t('futurePlans.items', { returnObjects: true }) || [];
+
   return (
     <Box sx={s.centralLayoutColumnStyles}>
       <Box sx={s.alignmentHeaderStackStyles}>
@@ -17,17 +19,19 @@ const FuturePlansSection = () => {
         </Box>
       </Box>
 
-      <Box sx={s.timelineCardContainerStyles}>
-        <Box sx={s.standaloneIconAvatarStyles}>📈</Box>
-        <Box sx={s.projectMetaStackStyles}>
-          <Box sx={s.technicalSubheadingStyles}>
-            {t('futurePlans.title')}
-          </Box>
-          <Box sx={s.technicalParagraphTextStyles}>
-            {t('futurePlans.description')}
+      {Array.isArray(plans) && plans.map((plan, index) => (
+        <Box key={index} sx={s.timelineCardContainerStyles}>
+          <Box sx={s.standaloneIconAvatarStyles}>{plan.icon}</Box>
+          <Box sx={s.projectMetaStackStyles}>
+            <Box sx={s.technicalSubheadingStyles}>
+              {plan.title}
+            </Box>
+            <Box sx={s.technicalParagraphTextStyles}>
+              {plan.description}
+            </Box>
           </Box>
         </Box>
-      </Box>
+      ))}
     </Box>
   );
 };

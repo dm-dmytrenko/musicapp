@@ -57,8 +57,23 @@
   "futurePlans": {
     "badge": "ROADMAP",
     "heading": "What we are building next",
-    "title": "Vibe-Driven Smart Promotion Engine",
-    "description": "We are developing a tool to automatically scan your track's specific sound waves and match it to curated music niches, custom target playlists, and aesthetic visual content styles to make promotion easier."
+    "items": [
+      {
+        "icon": "💽",
+        "title": "Album Intelligence",
+        "description": "Analyze full albums and EPs, generate titles, cover art, genres, and build a cohesive release identity."
+      },
+      {
+        "icon": "🚀",
+        "title": "AI Promotion Studio",
+        "description": "Create social media campaigns, content ideas, and AI-generated promotional videos for every release."
+      },
+      {
+        "icon": "🤝",
+        "title": "Artist Matchmaking",
+        "description": "Find ideal collaborators and reference artists with relevant contacts and personalized recommendations."
+      }
+    ]
   },
   "email": {
     "heading": "Don't miss an opportunity.",

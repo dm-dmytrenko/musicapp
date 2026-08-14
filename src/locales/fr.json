@@ -57,8 +57,23 @@
   "futurePlans": {
     "badge": "FEUILLE DE ROADMAP",
     "heading": "Ce que nous développons ensuite",
-    "title": "Moteur de Promotion Intelligente par Ambiance",
-    "description": "Nous développons un outil capable de scanner les ondes sonores de votre morceau et de le faire correspondre à des niches musicales ciblées, des playlists personnalisées et des styles visuels adaptés pour faciliter votre promotion."
+    "items": [
+      {
+        "icon": "💽",
+        "title": "Intelligence d'Album",
+        "description": "Analysez des albums complets et des EPs, générez des titres, des pochettes, des genres et créez une identité de sortie cohérente."
+      },
+      {
+        "icon": "🚀",
+        "title": "Studio de Promotion IA",
+        "description": "Créez des campagnes sur les réseaux sociaux, des idées de contenu et des vidéos promotionnelles générées par IA pour chaque sortie."
+      },
+      {
+        "icon": "🤝",
+        "title": "Mise en Relation d'Artistes",
+        "description": "Trouvez des collaborateurs idéaux et des artistes de référence avec des contacts pertinents et des recommandations personnalisées."
+      }
+    ]
   },
   "email": {
     "heading": "Ne manquez aucune opportunité.",
