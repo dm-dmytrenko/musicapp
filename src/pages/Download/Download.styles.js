@@ -97,18 +97,27 @@ export const infoRowStyles = {
 };
 
 export const infoRowLabelStyles = {
-  fontSize: '1.8vw',
+  fontSize: '12px',
   fontWeight: 800,
   color: 'primary.main',
   opacity: 0.6,
-  letterSpacing: '0.6px'
+  letterSpacing: '0.6px',
+  '@media (max-width: 500px)': {
+    fontSize: '11px',
+  }
 };
 
 export const infoRowValueStyles = {
-  fontSize: '1.8vw',
+  fontSize: '18px',
   minFontSize: '18px',
   fontWeight: 700,
-  color: 'primary.main'
+  color: 'primary.main',
+  '@media (max-width: 950px)': {
+    fontSize: '16px',
+  },
+  '@media (max-width: 500px)': {
+    fontSize: '15px',
+  }
 };
 
 export const thankYouMessageTextStyles = {
@@ -121,7 +130,7 @@ export const thankYouMessageTextStyles = {
   marginTop: '1.5vh',
   padding: '0 12px',
   '@media (max-width: 500px)': {
-    fontSize: '9px',
+    fontSize: '10px',
     margin: '4px 0',
   }
 };
