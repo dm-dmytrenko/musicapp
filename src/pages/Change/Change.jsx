@@ -88,7 +88,7 @@ const Change = () => {
           gridTemplateColumns: visibleOptions.length === 1 
             ? '1fr' 
             : { xs: '1fr', md: '1fr 1fr' },
-          gap: { xs: '12px', md: '16px' },
+          gap: { xs: '6px', md: '16px' },
           maxWidth: contentMaxWidth,
           width: '100%',
           margin: '0 auto',

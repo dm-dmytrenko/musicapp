@@ -7,9 +7,9 @@ export const pageGridContainerStyles = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  gap: '32px',
+  gap: '16px',
   boxSizing: 'border-box',
-  padding: { xs: '16px', sm: '24px' }
+  padding: { xs: '16px', sm: '20px' }
 };
 
 export const columnsFlexLayoutStyles = {
@@ -29,7 +29,7 @@ export const verticalCardStackStyles = {
   width: '100%',
   display: 'flex',
   flexDirection: 'column',
-  gap: '20px'
+  gap: '10px'
 };
 
 export const controlRowGlassPanelStyles = {
@@ -111,7 +111,7 @@ export const commentsWrapperAnimatedContainerStyles = {
 
 export const commentTextAreaStyles = {
   width: '100%',
-  height: '140px',
+  height: '100px',
   background: 'rgba(255, 255, 255, 0.5)',
   border: '2px solid rgba(0, 68, 204, 0.15)',
   borderRadius: '22px',
@@ -137,8 +137,8 @@ export const actionContainerWrapperStyles = {
   justifyContent: 'center',
   mt: '8px',
   '& button': {
-    padding: { xs: '16px 40px', sm: '20px 80px', md: '24px 140px' },
-    fontSize: { xs: '20px', sm: '24px', md: '28px' },
+    padding: { xs: '14px 32px', sm: '16px 48px', md: '24px 140px' },
+    fontSize: { xs: '16px', sm: '18px', md: '28px' },
     borderRadius: '40px',
     width: '100%',
     maxWidth: '520px'
